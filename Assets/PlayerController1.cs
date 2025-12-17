@@ -1,7 +1,7 @@
 using UnityEngine;
 
 #if ENABLE_INPUT_SYSTEM && !ENABLE_LEGACY_INPUT_MANAGER
-using UnityEngine.InputSystem;   // Nieuwe Input System
+using UnityEngine.InputSystem;   // New Input System
 #endif
 
 [RequireComponent(typeof(CharacterController))]
@@ -9,12 +9,13 @@ public class PlayerController : MonoBehaviour
 {
     [Header("Movement Settings")]
     public float moveSpeed = 6f;
+    public float sprintMultiplier = 1.5f;
     public float jumpHeight = 1.5f;
     public float gravity = -9.81f;
 
     [Header("Mouse Look Settings")]
     public float mouseSensitivity = 150f;
-    public Transform cameraTransform;   // Sleep hier je Main Camera in
+    public Transform cameraTransform;
 
     private CharacterController controller;
     private Vector3 velocity;
@@ -37,10 +38,12 @@ public class PlayerController : MonoBehaviour
         Move();
     }
 
+    // =======================
+    // MOUSE LOOK
+    // =======================
     void Look()
     {
 #if ENABLE_INPUT_SYSTEM && !ENABLE_LEGACY_INPUT_MANAGER
-        // Nieuwe Input System
         var mouse = Mouse.current;
         if (mouse == null) return;
 
@@ -48,7 +51,6 @@ public class PlayerController : MonoBehaviour
         float mouseX = mouseDelta.x;
         float mouseY = mouseDelta.y;
 #else
-        // Oude Input Manager
         float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
         float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
 #endif
@@ -62,6 +64,9 @@ public class PlayerController : MonoBehaviour
         transform.Rotate(Vector3.up * mouseX);
     }
 
+    // =======================
+    // MOVEMENT + SPRINT
+    // =======================
     void Move()
     {
         bool isGrounded = controller.isGrounded;
@@ -69,12 +74,11 @@ public class PlayerController : MonoBehaviour
         if (isGrounded && velocity.y < 0f)
             velocity.y = -2f;
 
-        // ------- INPUT LEZEN -------
         Vector2 moveInput = Vector2.zero;
         bool jumpPressed = false;
+        bool isSprinting = false;
 
 #if ENABLE_INPUT_SYSTEM && !ENABLE_LEGACY_INPUT_MANAGER
-        // Nieuwe Input System: Keyboard
         var kb = Keyboard.current;
         if (kb != null)
         {
@@ -90,18 +94,21 @@ public class PlayerController : MonoBehaviour
             moveInput = Vector2.ClampMagnitude(moveInput, 1f);
 
             jumpPressed = kb.spaceKey.wasPressedThisFrame;
+            isSprinting = kb.leftShiftKey.isPressed || kb.rightShiftKey.isPressed;
         }
 #else
-        // Oude Input Manager
         float xAxis = Input.GetAxisRaw("Horizontal");
         float zAxis = Input.GetAxisRaw("Vertical");
         moveInput = new Vector2(xAxis, zAxis);
-        jumpPressed = Input.GetButtonDown("Jump");
-#endif
-        // ---------------------------
+        moveInput = Vector2.ClampMagnitude(moveInput, 1f);
 
-        Vector3 move = (transform.right * moveInput.x + transform.forward * moveInput.y);
-        controller.Move(move * moveSpeed * Time.deltaTime);
+        jumpPressed = Input.GetButtonDown("Jump");
+        isSprinting = Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift);
+#endif
+
+        float currentSpeed = isSprinting ? moveSpeed * sprintMultiplier : moveSpeed;
+        Vector3 move = transform.right * moveInput.x + transform.forward * moveInput.y;
+        controller.Move(move * currentSpeed * Time.deltaTime);
 
         if (isGrounded && jumpPressed)
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
@@ -109,5 +116,4 @@ public class PlayerController : MonoBehaviour
         velocity.y += gravity * Time.deltaTime;
         controller.Move(velocity * Time.deltaTime);
     }
-
 }
