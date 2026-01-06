@@ -27,8 +27,8 @@ public class PlayerMovement : MonoBehaviour
 
     void Start()
     {
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+        //Cursor.lockState = CursorLockMode.Locked;
+        //Cursor.visible = false;               Disabled cursor hiding cuz fast travel menu needs it
     }
 
     void Update()
