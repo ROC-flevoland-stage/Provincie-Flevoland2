@@ -108,6 +108,12 @@ public class DialogueManager : MonoBehaviour
     /// <param name="dialogue"></param>
     public void Startdialogue(DialogueTree dialogue)
     {
+        // JUST FOR TESTING, REMOVE LATER
+        DialogueVariables.Instance.CreateVariable<int>("health", 100, (obj) => { Debug.Log($"Player health changed to: {obj}");});
+        DialogueVariables.Instance.CreateVariable<string>("name", "Hero", (obj) => { Debug.Log($"Player name changed to: {obj}"); });
+        // END OF TESTING
+
+
         isDialogueActive = true;
         isDialogueReady = false;
         isChoiceActive = false;

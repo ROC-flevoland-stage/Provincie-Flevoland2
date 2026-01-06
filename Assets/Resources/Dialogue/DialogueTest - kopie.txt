@@ -28,14 +28,6 @@
 0:What do you think?<o>-1:1,-2:2,-3:0</o>
 0:You chose to continue the dialogue. Hopefully everything worked first try!
 0:Now i'm going to do some magic to make it so you can never see the first few lines of this dialogue again.<i>l:3</i>
-0:Time to test the variable flags. Make sure that the DialogueVariables instance has a 'name' and 'health' variable set.
-0:Hello, (display:name)
-0:Your current health is (display:health).
-0:Let's increase your health by 10.(add:health,10)
-0:Your new health is (display:health).
-0:Now i'm going to change your name to 'Loser'.(change:name,Loser)
-0:Hey, (display:name). You've been renamed! (change:health, 1)
-0:By the way, your health is now (display:health).
 0:Thats all, after this next line the textbox should close.
 0:Goodbye!<c></c>
 

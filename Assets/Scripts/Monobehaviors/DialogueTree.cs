@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -127,6 +128,18 @@ public class DialogueTree : MonoBehaviour
         {
             while (parsedLine.Contains(flag))
                 parsedLine = ParseLineAnimFlags(parsedLine, flag);
+        }
+
+        string[] varFlags = { "(display", "(change", "(add" };
+        // Check the line for variable flags and parse them
+        foreach (string flag in varFlags)
+        {
+            int tryCount = 0;
+            while (parsedLine.Contains(flag) && tryCount < 1)
+            {
+                parsedLine = ParseLineVariableFlag(parsedLine, flag);
+                tryCount++;
+            }
         }
 
         return parsedLine;
@@ -316,7 +329,8 @@ public class DialogueTree : MonoBehaviour
         Dictionary<char, char> startToEndChars = new()
         {
             { '[', ']' },
-            { '{', '}' }
+            { '{', '}' },
+            { '(', ')' }
         };
         char flagEndChar = startToEndChars[flagStartChar];
 
@@ -568,6 +582,77 @@ public class DialogueTree : MonoBehaviour
         line = line.Remove(startIndex, length);
         // Remove the closing tag from the line
         line = line.Remove(endIndex, flag.Length + 1);
+        return line;
+    }
+
+    /// <summary>
+    /// Parses a dialogue line for a specific variable flag and performs the associated action.
+    /// </summary>
+    /// <param name="line">The line to parse.</param>
+    /// <param name="flag">The style flag to parse.</param>
+    /// <returns>The new line with the animation flag removed.</returns>
+    private string ParseLineVariableFlag(string line, string flag)
+    {
+        var (startIndex, length, endIndex, p) = GetFlagParametersFromInsideTag(line, flag);
+        flag += ')'; // Add the closing ")" to the flag for easier comparison
+
+        string varName = p[0].Trim();
+        switch (flag)
+        {
+            // Display variable flag, displays a variable's value in the dialogue line.
+            // display format: (display:variableName)
+            // variableName is the name of the variable to display
+            case "(display)":
+                // Extract the variable name
+                // Find the variable value
+                var value = DialogueVariables.Instance.GetVariable<object>(varName);
+                // Replace the flag with the variable value
+                line = line.Insert(startIndex, value.ToString());
+                startIndex += value.ToString().Length;
+                break;
+
+            // Change variable flag, changes a variable's value.
+            // change format: (change:variableName,newValue)
+            case "(change)":
+                // Extract the variable name and new value
+                string newValue = p[1].Trim();
+                // Change the variable value
+                Type varType = DialogueVariables.Instance.GetVariableType(varName);
+                DialogueVariables.Instance.SetVariable(varName, Convert.ChangeType(newValue, varType));
+                break;
+
+            // Add variable flag, adds a value to a variable.
+            // add format: (add:variableName,toAdd)
+            // variableName is the name of the variable to add to
+            // toAdd is the amount to add to the variable
+            case "(add)":
+                // Extract the variable name and amount to add
+                string toAdd = p[1].Trim();
+                // Add to the variable value
+                varType = DialogueVariables.Instance.GetVariableType(varName);
+                var curValue = DialogueVariables.Instance.GetVariable<object>(varName);
+                object newVarValue = curValue;
+                switch (varType)
+                {
+                    case Type t when t == typeof(int):
+                        newVarValue = (int)curValue + int.Parse(toAdd);
+                        break;
+                    case Type t when t == typeof(float):
+                        newVarValue = (float)curValue + float.Parse(toAdd);
+                        break;
+                    case Type t when t == typeof(string):
+                        newVarValue = (string)curValue + toAdd;
+                        break;
+                    default:
+                        Debug.LogError($"Add operation not supported for variable type: {varType}");
+                        break;
+                }
+                DialogueVariables.Instance.SetVariable(varName, newVarValue);
+                break;
+
+        }
+        // Remove the opening tag from the line
+        line = line.Remove(startIndex, length);
         return line;
     }
 }
