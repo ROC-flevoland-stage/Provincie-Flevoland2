@@ -89,6 +89,11 @@ public class PlayerMovement : MonoBehaviour
             moveInput = new Vector2(x, z);
             moveInput = Vector2.ClampMagnitude(moveInput, 1f);
 
+            if (kb.leftShiftKey.isPressed)
+            {
+                moveInput *= 1.5f;
+            }
+
             jumpPressed = kb.spaceKey.wasPressedThisFrame;
         }
 #else
