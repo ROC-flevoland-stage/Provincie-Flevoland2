@@ -1,4 +1,4 @@
 ﻿0:Hallo, ik ben Will Board.
-0:Dit is een minigame. Deze is nog niet af natuurlijk.
-0:In de uiteindelijke versie van het spel zullen er veel meer minigames zijn om te spelen.
-0:Probeer deze eens uit als je tijd hebt!<c></c>
+0:Welkom in de stad!
+0:Hier kan je rondlopen en verschillende plekken ontdekken.
+0:Veel plezier!<c></c>
