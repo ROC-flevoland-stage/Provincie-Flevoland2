@@ -62,6 +62,36 @@ public class DialogueManager : MonoBehaviour
             Destroy(gameObject);
     }
 
+    private void Update()
+    {
+        if (!isDialogueActive || !isDialogueReady || isChoiceActive) return;
+
+        // Check for input to navigate dialogue lines
+#if ENABLE_INPUT_SYSTEM && !ENABLE_LEGACY_INPUT_MANAGER
+        var kb = Keyboard.current;
+        if (kb != null)
+        {
+            if (kb.spaceKey.wasPressedThisFrame)
+            {
+                ShowNextLine();
+            }
+            else if (kb.backspaceKey.wasPressedThisFrame)
+            {
+                ShowPreviousLine();
+            }
+        }
+#else
+        if (Input.GetKeyDown("space"))
+        {
+            ShowNextLine();
+        }
+        else if (Input.GetKeyDown("backspace"))
+        {
+            ShowPreviousLine();
+        }
+#endif
+    }
+
     /// <summary>
     /// Sets the text of the TextMeshPro component to the current line in the dialogue and invokes the OnDialogueLineChanged event.
     /// </summary>
@@ -108,12 +138,6 @@ public class DialogueManager : MonoBehaviour
     /// <param name="dialogue"></param>
     public void Startdialogue(DialogueTree dialogue)
     {
-        // JUST FOR TESTING, REMOVE LATER
-        DialogueVariables.Instance.CreateVariable<int>("health", 100, (obj) => { Debug.Log($"Player health changed to: {obj}");});
-        DialogueVariables.Instance.CreateVariable<string>("name", "Hero", (obj) => { Debug.Log($"Player name changed to: {obj}"); });
-        // END OF TESTING
-
-
         isDialogueActive = true;
         isDialogueReady = false;
         isChoiceActive = false;

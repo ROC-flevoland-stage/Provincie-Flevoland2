@@ -150,7 +150,6 @@ GameObject:
   - component: {fileID: 382905600153935749}
   - component: {fileID: 2585673348385521363}
   - component: {fileID: 8986255252022246766}
-  - component: {fileID: 8058933575864118892}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -264,23 +263,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 9114086157885851264}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 89f79e348b8286845888ad1642e414a8, type: 3}
+  m_Script: {fileID: 11500000, guid: e06b80e4a077fca409c3f0980b5cadf4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
   moveSpeed: 6
   jumpHeight: 1.5
   gravity: -9.81
-  mouseSensitivity: 50
-  cameraTransform: {fileID: 5362283982617183728}
---- !u!114 &8058933575864118892
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9114086157885851264}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 795ef1d74e5cf15479956e0b739aae14, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerInventory
+  mouseSensitivity: 150
+  cameraTransform: {fileID: 0}

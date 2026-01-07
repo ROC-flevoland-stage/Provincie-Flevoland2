@@ -1,0 +1,20 @@
+﻿-1:Jazeker!
+-2:meh...
+-3:Kom maar op!
+
+0:Hallo! Welkom bij de showcase van ons spel.
+0:Vandaag laten we zien wat we allemaal al hebben gedaan en wat onze visie is voor de toekomst.
+0:Heb je er zin in?<o>-1:1,-2:2,-3:3</o>
+
+
+1:{pulse}Geweldig!{/pulse} Laten we beginnen.<j>0:4</j>
+
+2:{shake}WAT!?{/shake} Maar... We hebben hier heel hard aan gewerkt. :(
+2:Laten we dit opnieuw proberen.<j>2:0</j>
+
+3:{spin}WOOHOO!{/spin}<j>0:4</j>
+
+4:Je kan lopen met de [bold]WASD[/bold] of de [bold]pijltjestoetsen[/bold].
+4:Je kan om je heen kijken door de muis te bewegen.
+4:Probeer de wereld te ontdekken!
+4:Er zijn overal borden zoals ik die je meer vertellen.<c></c>
