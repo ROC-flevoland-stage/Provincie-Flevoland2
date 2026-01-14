@@ -1,0 +1,4 @@
+﻿0:Hallo, ik ben Phill Board.
+0:Als je hier naar rechts loop zie je het fast-travel menu.
+0:Hier kan je snel naar verschillende plekken in de stad reizen zonder to hoeven lopen.
+0:Probeer het eens uit!<c></c>

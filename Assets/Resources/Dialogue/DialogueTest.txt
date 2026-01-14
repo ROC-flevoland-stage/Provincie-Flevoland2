@@ -1,0 +1,54 @@
+﻿-1: Choice 1. (Jump flag test)
+-2: Choice 2. (Skip Flag test)
+-3: Choice 3. (Continue)
+
+
+0:Hello!
+0:This is a test dialog.
+0:How are you today?
+0:Lets try testing some of the more advanced text funcitons.
+0:We can have multiple lines.\nLike this.\nOr this.\nHopefully it works!
+0:We can also have some special characters\n!@#$%^&*()_+-=[]{}|;':",.<>/?`~
+0:We even have animated text!
+0:{shake}shake{/shake}
+0:{wave}wave{/wave}
+0:{spin}spin{/spin}
+0:{color:#FF0000,#00FF00}color{/color}
+0:{pulse}pulse{/pulse}
+0:All at once! {shake}shake{/shake} {wave}wave{/wave} {spin}spin{/spin} {color:#0000FF,#00FF00}color{/color} {pulse}pulse{/pulse}
+0:Now let's test some style flags.
+0:This line should be [italic]italicized[/italic].
+0:This line should be [bold]bolded[/bold].
+0:This line should be [underline]underlined[/underline].
+0:This line should be [strikethrough]strikethrough[/strikethrough].
+0:This line should be a [color:#FF0000]red[/color] word.
+0:Taste the [color:#FF0000]R[/color][color:#FFA500]A[/color][color:#FFFF00]I[/color][color:#008000]N[/color][color:#0000FF]B[/color][color:#4B0082]O[/color][color:#EE82EE]W[/color]!
+0:Now let's test the text flags.
+0:This next line should test the Option flag. It should open a choice dialogue.
+0:What do you think?<o>-1:1,-2:2,-3:0</o>
+0:You chose to continue the dialogue. Hopefully everything worked first try!
+0:Now i'm going to do some magic to make it so you can never see the first few lines of this dialogue again.<i>l:3</i>
+0:Time to test the variable flags. Make sure that the DialogueVariables instance has a 'name' and 'health' variable set.
+0:Hello, (display:name)
+0:Your current health is (display:health).
+0:Let's increase your health by 10.(add:health,10)
+0:Your new health is (display:health).
+0:Now i'm going to change your name to 'Loser'.(change:name,Loser)
+0:Hey, (display:name). You've been renamed! (change:health, 1)
+0:By the way, your health is now (display:health).
+0:Thats all, after this next line the textbox should close.
+0:Goodbye!<c></c>
+
+
+1:You chose option 1!
+1:Now let's test the Jump flag. It should jump over the next line in this file.<j>3</j>
+1:This line should be skipped.
+1:This line should be shown after the jump.
+1:Now let's get back to the main dialogue.<j>9:0</j>
+
+
+2:You chose option 2!
+2:Now let's test the Skip flag. It should skip the next line in this file.<s>1</s>
+2:This line should be skipped.
+2:This line should be shown after the skip.
+2:Now let's get back to the main dialogue.<j>9:0</j>
