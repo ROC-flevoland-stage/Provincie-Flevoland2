@@ -1161,7 +1161,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1bbe51e12e5dba74682d4eb71b890bc1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DialogeTree
-  dialogueFile: {fileID: 4900000, guid: 6cd15297967a40446a2104db94249baf, type: 3}
+  dialogueFile: {fileID: 4900000, guid: 41d9ac40b96a5184e9e90778bcfb7b79, type: 3}
   currentLines: []
   currentLine: 
   currentLineIndex: 0
