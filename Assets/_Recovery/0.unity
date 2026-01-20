@@ -524,9 +524,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3340246272574473522, guid: 68d4d019f3bf07b4eb456cf2148af338, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1582594981}
-    - targetCorrespondingSourceObject: {fileID: 3340246272574473522, guid: 68d4d019f3bf07b4eb456cf2148af338, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1582594986}
   m_SourcePrefab: {fileID: 100100000, guid: 68d4d019f3bf07b4eb456cf2148af338, type: 3}
 --- !u!1 &1381762446
 GameObject:
@@ -685,7 +682,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Npctrigger
   normalDialogue: {fileID: 1582594980}
-  thankYouDialogue: {fileID: 1582594986}
+  thankYouDialogue: {fileID: 0}
 --- !u!114 &1582594980
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -720,27 +717,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TextTrigger
   textObject: {fileID: 460422192}
---- !u!114 &1582594986
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1582594973}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1bbe51e12e5dba74682d4eb71b890bc1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::DialogueTree
-  dialogueFile: {fileID: 4900000, guid: df1a9099e59dd174b86589379b08c6c0, type: 3}
-  currentLines: []
-  currentLine: 
-  currentLineIndex: 0
-  choiceIndex: 0
-  shouldClose: 0
-  initialState:
-    currentLineIndex: 0
-    choiceIndex: 0
 --- !u!1 &1654553460 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 9114086157885851264, guid: 4ab230dbd41f84e468901ff3a80deee2, type: 3}

@@ -12,11 +12,22 @@ public class Npctrigger : MonoBehaviour
             return;
 
         PlayerInventory inventory = other.GetComponent<PlayerInventory>();
+        DialogueVariables.Instance.CreateVariable<bool>(
+            "wil je dit geven",
+            false,
+            (v) =>
+            {
+                if ((bool)v) 
+                    // Speler geeft item aan NPC
+                    inventory.DropCurrent();
+            }            
+            );
 
         if (inventory != null && inventory.HasItem)
         {
-            // Speler geeft item aan NPC
-            inventory.DropCurrent();
+
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
 
             Debug.Log("NPC: Dankjewel voor het cadeau!");
 
