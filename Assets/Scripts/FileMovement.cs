@@ -6,7 +6,7 @@ public class FileMovement : MonoBehaviour
     public Vector3 moveDirection = Vector3.back;
 
     [Tooltip("Speed in units/second.")]
-    public float speed = 2f;
+    public float speed = 3f;
 
     Rigidbody rb;
     Vector3 dir;
@@ -24,7 +24,7 @@ public class FileMovement : MonoBehaviour
 
         if (rb != null)
         {
-            // Kinematic: use MovePosition. Non-kinematic: set velocity.
+            
             if (rb.isKinematic)
                 rb.MovePosition(rb.position + dir * speed * Time.fixedDeltaTime);
             else

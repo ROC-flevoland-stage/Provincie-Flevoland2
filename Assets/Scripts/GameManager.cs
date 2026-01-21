@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
     [Header("UI (TextMeshPro)")]
     public TMP_Text scoreText;
     public TMP_Text hpText;
-    public GameObject gameOverPanel; // optional: assign a panel to show on game over
+    public GameObject gameOverPanel; // optineel voor later
 
     void Start()
     {

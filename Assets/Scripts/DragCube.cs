@@ -5,7 +5,7 @@ public class DragCube : MonoBehaviour
     Camera cam;
     bool dragging;
     float fixedY;
-    FileMovement mover; // reference to pause/resume automatic movement while dragging
+    FileMovement mover; // zodat het ni moved waanneer we draggen
 
     void Start()
     {
@@ -24,7 +24,7 @@ public class DragCube : MonoBehaviour
                 if (hit.transform == transform)
                 {
                     dragging = true;
-                    // Pause automatic movement while dragging so it feels natural
+                    // niet bewegen als ik drag
                     if (mover != null)
                         mover.enabled = false;
                 }
@@ -34,7 +34,7 @@ public class DragCube : MonoBehaviour
         if (Input.GetMouseButtonUp(0))
         {
             dragging = false;
-            // Resume automatic movement after releasing
+            // moven als ik ni drag
             if (mover != null)
                 mover.enabled = true;
         }
