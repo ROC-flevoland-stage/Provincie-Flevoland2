@@ -13,6 +13,9 @@ public class ResourcesManager : MonoBehaviour
     private int energie = 0;
     private float geld = 0;
     private int stress = 0;
+
+
+    // get set for Energie
     public int Energie { 
         get { return energie; } 
         set
@@ -21,6 +24,7 @@ public class ResourcesManager : MonoBehaviour
             energieUI.text = $"Energie: {energie}";
         } 
     }
+    // get set for Geld
     public float Geld
     {
         get { return geld; }
@@ -30,6 +34,7 @@ public class ResourcesManager : MonoBehaviour
             geldUI.text = $"Geld: ${geld}";
         }
     }
+    // get set for Stress
     public int Stress
     {
         get { return stress; }
@@ -55,9 +60,6 @@ public class ResourcesManager : MonoBehaviour
             geldUI = transform.Find("Geld").GetComponent<TextMeshProUGUI>();
             stressUI = transform.Find("Stress").GetComponent<TextMeshProUGUI>();
         }
-        Energie = 100;
-        Geld += 2.56001f;
-        Stress = 4;
     }
     
 }
