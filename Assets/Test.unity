@@ -239,14 +239,14 @@ RectTransform:
   m_GameObject: {fileID: 158227174}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 21.078312, y: 11.391829, z: 7.0671}
+  m_LocalScale: {x: 20.183748, y: 10.90836, z: 6.7671723}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 252505652}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -74, y: -36}
+  m_AnchoredPosition: {x: 27, y: -1}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &158227176
@@ -269,7 +269,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 4f8d75667953ba64aad40ef0d5eea5d8, type: 3}
+  m_Sprite: {fileID: 21300000, guid: acaab6a0e5486d944b642a7aec31047b, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -428,7 +428,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 573, y: 422}
+  m_AnchoredPosition: {x: 701, y: 444}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &330496641
@@ -460,8 +460,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4278190335
+  m_fontColor: {r: 1, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -564,7 +564,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -74, y: -82}
+  m_AnchoredPosition: {x: 4, y: -27}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &418668845
@@ -635,23 +635,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StamperGame
   paperImage: {fileID: 418668845}
-  goodPaperSprites:
-  - {fileID: 21300000, guid: 84c31227690499d44a4f15fc7f1e8b2a, type: 3}
-  - {fileID: 21300000, guid: e443adee8acc6764fab3dfe3dfa3388b, type: 3}
-  - {fileID: 21300000, guid: bede5c3cf6c2fb04196dd35f5d19aa93, type: 3}
-  badPaperSprites:
-  - {fileID: 21300000, guid: 237cf812c6432f245b561f878e7f81a4, type: 3}
-  - {fileID: 21300000, guid: ce9776f8f8629404e9c4d0d38690139e, type: 3}
-  - {fileID: 21300000, guid: 9e3c393d41046974cbe8290df98fee76, type: 3}
-  - {fileID: 21300000, guid: 96b55b3c5e55d874691d17d3fb1d98eb, type: 3}
+  paperSprites:
+  - {fileID: 21300000, guid: 89492712b9e0f69479174d713b460ab0, type: 3}
+  - {fileID: 21300000, guid: d3b0ee95b4c32b040a58311eb3c30f04, type: 3}
+  - {fileID: 21300000, guid: d9b768bcade81e743940c3a0f878b3ae, type: 3}
+  - {fileID: 21300000, guid: be87694194ab4954b81b54fc0669d9d0, type: 3}
+  - {fileID: 21300000, guid: 1ceabba45aded3c41a62904120133b08, type: 3}
+  - {fileID: 21300000, guid: 5262369a2375e9c45879204e38e0ab40, type: 3}
+  - {fileID: 21300000, guid: c30ca2c4f3253a04985c57f233f10406, type: 3}
+  - {fileID: 21300000, guid: 69f04995a82910148a27d7b86c4c0be6, type: 3}
+  - {fileID: 21300000, guid: b00d5941e8d3d65498d65e9436976c5f, type: 3}
+  - {fileID: 21300000, guid: e7d40515975e07c4f84618055dfd34ec, type: 3}
   timerText: {fileID: 2066213721}
   resultText: {fileID: 860805766}
-  papersStampedText: {fileID: 330496641}
+  NewsratedText: {fileID: 330496641}
   audioSource: {fileID: 964386155}
-  correctSound: {fileID: 8300000, guid: 5cef46872ee84274a9103139815d7b8c, type: 3}
-  wrongSound: {fileID: 8300000, guid: 5cef46872ee84274a9103139815d7b8c, type: 3}
+  stampSound: {fileID: 0}
   gameTime: 300
-  papersToStampLimit: 7
+  papersToStampLimit: 10
+  yesLimit: 5
+  noLimit: 5
 --- !u!4 &549216987
 Transform:
   m_ObjectHideFlags: 0
@@ -733,8 +736,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4278190335
+  m_fontColor: {r: 1, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -1791,8 +1794,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4278190335
+  m_fontColor: {r: 1, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
