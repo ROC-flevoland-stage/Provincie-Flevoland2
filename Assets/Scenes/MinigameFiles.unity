@@ -518,7 +518,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 9e570398ef560ee4ab84597db48a4e94, type: 2}
+  - {fileID: 2100000, guid: 6b3837c50deb113409b3b079a87dc7cb, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1637,7 +1637,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 9e570398ef560ee4ab84597db48a4e94, type: 2}
+  - {fileID: 2100000, guid: 6b3837c50deb113409b3b079a87dc7cb, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1757,7 +1757,7 @@ Terrain:
   m_GameObject: {fileID: 1906303120}
   m_Enabled: 1
   serializedVersion: 6
-  m_TerrainData: {fileID: 15600000, guid: d5dba7fdfd8e820419210be2f0e79b4e, type: 2}
+  m_TerrainData: {fileID: 0}
   m_TreeDistance: 5000
   m_TreeBillboardDistance: 50
   m_TreeCrossFadeLength: 5
