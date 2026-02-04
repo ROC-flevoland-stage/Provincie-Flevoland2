@@ -93,14 +93,14 @@ public class SaveManager : MonoBehaviour
         PlayerPrefs.Save();
 
         // Save to .json file
-        File.WriteAllText(saveFilePath + ".json", saveString);
+        System.IO.File.WriteAllText(saveFilePath + ".json", saveString);
 
         // Save to encripted .sav file
         using MemoryStream stream = new MemoryStream();
         using BinaryWriter writer = new BinaryWriter(stream);
         writer.Write(saveString);
         byte[] data = stream.ToArray();
-        File.WriteAllBytes(saveFilePath + ".sav", data);
+        System.IO.File.WriteAllBytes(saveFilePath + ".sav", data);
 
         Debug.Log($"Saved to {saveFilePath}");
     }
@@ -111,8 +111,8 @@ public class SaveManager : MonoBehaviour
     public static void LoadDataFromFile()
     {
         bool playerPrefsExists = PlayerPrefs.HasKey("SaveData");
-        bool jsonFileExists = File.Exists(saveFilePath + ".json");
-        bool savFileExists = File.Exists(saveFilePath + ".sav");
+        bool jsonFileExists = System.IO.File.Exists(saveFilePath + ".json");
+        bool savFileExists = System.IO.File.Exists(saveFilePath + ".sav");
 
         int amountOfSaveStrings = (playerPrefsExists ? 1 : 0) + (jsonFileExists ? 1 : 0) + (savFileExists ? 1 : 0);
         string[] saveStrings = new string[amountOfSaveStrings];
@@ -120,10 +120,10 @@ public class SaveManager : MonoBehaviour
         if (playerPrefsExists)
             saveStrings[index++] = PlayerPrefs.GetString("SaveData");
         if (jsonFileExists)
-            saveStrings[index++] = File.ReadAllText(saveFilePath + ".json");
+            saveStrings[index++] = System.IO.File.ReadAllText(saveFilePath + ".json");
         if (savFileExists)
         {
-            byte[] data = File.ReadAllBytes(saveFilePath + ".sav");
+            byte[] data = System.IO.File.ReadAllBytes(saveFilePath + ".sav");
             using MemoryStream stream = new MemoryStream(data);
             using BinaryReader reader = new BinaryReader(stream);
             saveStrings[index++] = reader.ReadString();
