@@ -32,6 +32,7 @@ public class ResourcesManager : MonoBehaviour
         set
         {
             geld = (Mathf.Floor(value * 100)) * 0.01f; // Set internal value to given value, rounding it to cents
+            SaveManager.CreateOrSetValue<float>("Resource_Manager_Geld", value, true); // Set value in save file
             geldTextValue.text = geld.ToString(); // Set text value
         }
     }
@@ -43,6 +44,7 @@ public class ResourcesManager : MonoBehaviour
         {
             if (value > maxEnergie) { value = maxEnergie; } // If given value exceeds max, clamp
             energie = value; // Set internal value to given value
+            SaveManager.CreateOrSetValue<int>("Resource_Manager_Energie", value, true); // Set value in save file
             energieSliderValue.value = (float)energie/maxEnergie; // Set slider value
         } 
     }
@@ -55,6 +57,7 @@ public class ResourcesManager : MonoBehaviour
         {
             if(value > maxStress) { value = maxStress; } // If given value exceeds max, clamp
             stress = value; // Set internal value to given value
+            SaveManager.CreateOrSetValue<float>("Resource_Manager_Stress", value, true); // Set value in save file
             stressSliderValue.value = (float)stress / maxStress; // Set slider value
         }
     }
@@ -76,10 +79,26 @@ public class ResourcesManager : MonoBehaviour
             energieSliderValue = transform.Find("Energie").GetComponent<Slider>();
             stressSliderValue = transform.Find("Stress").GetComponent<Slider>();
 
-            // Set self to update UI
-            Geld = geld;
-            Energie = energie;
-            Stress = stress;
+
+            // TEMPORARY load save file
+            SaveManager.LoadDataFromFile();
+            // Get values from save file
+            float _geld = 0;
+            int _energie = 0;
+            int _stress = 0;
+            if (SaveManager.TryGetValue<float>("Resource_Manager_Geld", out _geld))
+            {
+                Geld = _geld;
+            }
+            if (SaveManager.TryGetValue<int>("Resource_Manager_Energie", out _energie))
+            {
+                Energie = _energie;
+            }
+            if (SaveManager.TryGetValue<int>("Resource_Manager_Stress", out _energie))
+            {
+                Stress = _stress;
+            }
+
             DontDestroyOnLoad(gameObject);
         }
     }
