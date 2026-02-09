@@ -4,7 +4,7 @@ using UnityEngine;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
-public class SaveManager : MonoBehaviour
+public static class SaveManager
 {
     private static Dictionary<string, (object value, bool isPersistent)> SaveData = new(); // Key: Name, Value: (Value, IsPersistent)
     private static JsonSerializerSettings JsonSerializerSettings = new JsonSerializerSettings
