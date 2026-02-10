@@ -83,9 +83,9 @@ public class ResourcesManager : MonoBehaviour
             // TEMPORARY load save file
             SaveManager.LoadDataFromFile();
             // Get values from save file
-            float _geld = 0;
-            int _energie = 0;
-            int _stress = 0;
+            float _geld;
+            int _energie;
+            int _stress;
             if (SaveManager.TryGetValue<float>("Resource_Manager_Geld", out _geld))
             {
                 Geld = _geld;
@@ -94,7 +94,7 @@ public class ResourcesManager : MonoBehaviour
             {
                 Energie = _energie;
             }
-            if (SaveManager.TryGetValue<int>("Resource_Manager_Stress", out _energie))
+            if (SaveManager.TryGetValue<int>("Resource_Manager_Stress", out _stress))
             {
                 Stress = _stress;
             }
