@@ -3,8 +3,9 @@
 --- !u!78 &1
 TagManager:
 <<<<<<< Updated upstream
-  serializedVersion: 2
-  tags: []
+  serializedVersion: 3
+  tags:
+  - File
 =======
   serializedVersion: 3
   tags:
@@ -60,27 +61,3 @@ TagManager:
   - Light Layer 5
   - Light Layer 6
   - Light Layer 7
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
