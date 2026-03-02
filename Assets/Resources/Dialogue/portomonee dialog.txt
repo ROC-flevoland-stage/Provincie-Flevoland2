@@ -1,0 +1,12 @@
+-1:houden
+-2:laten liggen
+
+0:je hebt een portomonee gevonden wat ga je doen?
+0:<o>-1:1,-2:2</o>
+
+
+
+1:houden (change:wil je dit item houden,true)
+1:je behoud het item.<c></c>
+
+2:ik laat dit item liggen<c></c>

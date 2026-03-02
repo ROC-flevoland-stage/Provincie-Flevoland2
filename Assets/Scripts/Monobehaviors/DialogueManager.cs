@@ -252,16 +252,16 @@ public class DialogueManager : MonoBehaviour
         float elapsed = 0f;
         Vector3 startScale = close ? Vector3.one : Vector3.zero;
         Vector3 endScale = close ? Vector3.zero : Vector3.one;
-        choiceBox.transform.localScale = startScale;
+        this.choiceBox.transform.localScale = startScale;
         // Animate the scale over time
         while (elapsed < duration)
         {
             elapsed += Time.deltaTime;
             float t = Mathf.Clamp01(elapsed / duration);
-            choiceBox.transform.localScale = Vector3.Lerp(startScale, endScale, t);
+            this.choiceBox.transform.localScale = Vector3.Lerp(startScale, endScale, t);
             yield return null;
         }
-        choiceBox.transform.localScale = endScale;
+        this.choiceBox.transform.localScale = endScale;
 
         if (close)
         {
@@ -270,8 +270,7 @@ public class DialogueManager : MonoBehaviour
         }
 
         // Set the choices
-        Transform choiceArea = choiceBox.Find("Choices");
-        foreach (Transform child in choiceArea)
+        foreach (Transform child in choiceBox)
             Destroy(child.gameObject);
 
         int buttonSpacing = 60;
@@ -282,7 +281,7 @@ public class DialogueManager : MonoBehaviour
             string choiceText = kvp.Value;
 
             // Instantiate a button for each choice
-            Transform buttonTransform = Instantiate(choiceButtonPrefab, choiceArea).transform;
+            Transform buttonTransform = Instantiate(choiceButtonPrefab, choiceBox).transform;
             TMPro.TextMeshProUGUI buttonText = buttonTransform.GetComponentInChildren<TMPro.TextMeshProUGUI>();
             buttonText.text = choiceText;
 
