@@ -1,33 +1,37 @@
 using UnityEngine;
+using TMPro;
 
 public class FileSpawner : MonoBehaviour
 {
-    public GameObject GreenCubeFile;
-    public GameObject RedCubeFile;
-    public float spawnInterval = 2f;
+    public GameObject[] cubesToSpawn;
+    public string[] spawnLabels;
     public Vector3 spawnAreaSize = new Vector3(5f, 0f, 5f);
+    public GameManager gameManager;
 
-    float timer;
+    GameObject currentInstance;
+    int spawnIndex;
 
     void Start()
     {
-        timer = 0f;
+        if (gameManager == null)
+            gameManager = FindObjectOfType<GameManager>();
+
+        spawnIndex = 0;
+        TrySpawn();
     }
 
     void Update()
     {
-        timer += Time.deltaTime;
-        if (timer < spawnInterval) return;
-
-        SpawnRandomCube();
-        timer = 0f;
+        if (currentInstance == null)
+            TrySpawn();
     }
 
-    void SpawnRandomCube()
+    void TrySpawn()
     {
-        if (GreenCubeFile == null || RedCubeFile == null) return;
-
-        GameObject prefabToSpawn = Random.value < 0.5f ? GreenCubeFile : RedCubeFile;
+        if (spawnIndex >= cubesToSpawn.Length) return;
+        var prefab = cubesToSpawn[spawnIndex];
+        if (prefab == null) return;
+        if (gameManager != null && spawnIndex >= gameManager.totalCubes) return;
 
         Vector3 half = spawnAreaSize * 0.5f;
         Vector3 localOffset = new Vector3(
@@ -37,6 +41,22 @@ public class FileSpawner : MonoBehaviour
         );
 
         Vector3 spawnPosition = transform.position + transform.TransformVector(localOffset);
-        Instantiate(prefabToSpawn, spawnPosition, Quaternion.identity);
+        currentInstance = Instantiate(prefab, spawnPosition, Quaternion.identity);
+
+        var fileComp = currentInstance.GetComponent<SpawnedFile>();
+        if (fileComp != null)
+        {
+            fileComp.index = spawnIndex;
+            if (spawnLabels != null && spawnLabels.Length > spawnIndex)
+                fileComp.label = spawnLabels[spawnIndex];
+            else
+                fileComp.label = "Item " + (spawnIndex + 1);
+        }
+
+        var tm = currentInstance.GetComponentInChildren<TMP_Text>();
+        if (tm != null)
+            tm.text = (fileComp != null && !string.IsNullOrEmpty(fileComp.label)) ? fileComp.label : ("Item " + (spawnIndex + 1));
+
+        spawnIndex++;
     }
 }

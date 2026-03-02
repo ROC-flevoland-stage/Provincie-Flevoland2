@@ -2,21 +2,17 @@ using UnityEngine;
 
 public class SortZone : MonoBehaviour
 {
-    public FileType acceptsType;
+    public int ratingValue = 1; // Set this in the Inspector for each zone (1-5)
     public GameManager gameManager;
 
     void OnTriggerEnter(Collider other)
     {
-        File file = other.GetComponent<File>();
+        var file = other.GetComponent<SpawnedFile>();
         if (file == null) return;
 
-        if (file.fileType == acceptsType)
+        if (gameManager != null)
         {
-            gameManager.CorrectFile(other.gameObject);
-        }
-        else
-        {
-            gameManager.WrongFile(other.gameObject);
+            gameManager.PlaceCube(ratingValue, other.gameObject);
         }
     }
 }

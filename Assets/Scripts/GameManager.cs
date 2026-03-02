@@ -3,51 +3,71 @@ using TMPro;
 
 public class GameManager : MonoBehaviour
 {
-    public int score = 0;
-    public int hp = 5;
+    public int totalCubes = 10;
+    int cubesPlaced;
+    int[] ratings;
 
     [Header("UI (TextMeshPro)")]
-    public TMP_Text scoreText;
-    public TMP_Text hpText;
-    public GameObject gameOverPanel; // optineel voor later
+    public TMP_Text cubesLeftText;
+    public TMP_Text resultText;
+
+    bool gameEnded; 
 
     void Start()
     {
+        ratings = new int[totalCubes];
+        cubesPlaced = 0;
+        gameEnded = false;
+
+        if (resultText != null)
+            resultText.gameObject.SetActive(false);
+
         UpdateUI();
-        if (gameOverPanel != null)
-            gameOverPanel.SetActive(false);
     }
 
+    // Called by SortZone with ratingValue (1-5)
+    public void PlaceCube(int rating, GameObject file)
+    {
+        if (gameEnded) return;
+
+        rating = Mathf.Clamp(rating, 1, 5);
+        if (cubesPlaced < totalCubes)
+            ratings[cubesPlaced] = rating;
+
+        cubesPlaced++;
+        Destroy(file);
+        UpdateUI();
+
+        if (cubesPlaced >= totalCubes)
+            EndGame();
+    }
+
+    // Backwards-compatible helpers (optional mapping)
     public void CorrectFile(GameObject file)
     {
-        score++;
-        UpdateUI();
-        Destroy(file);
+        PlaceCube(5, file);
     }
 
     public void WrongFile(GameObject file)
     {
-        hp--;
-        UpdateUI();
-        Destroy(file);
-
-        if (hp <= 0)
-            GameOver();
+        PlaceCube(1, file);
     }
 
     void UpdateUI()
     {
-        if (scoreText != null)
-            scoreText.text = "Score: " + score;
-        if (hpText != null)
-            hpText.text = "HP: " + hp;
+        if (cubesLeftText != null)
+            cubesLeftText.text = "Cubes left: " + Mathf.Max(0, totalCubes - cubesPlaced);
     }
 
-    void GameOver()
+    void EndGame()
     {
-        Debug.Log("Game Over");
-        if (gameOverPanel != null)
-            gameOverPanel.SetActive(true);
+        gameEnded = true;
+
+        if (resultText != null)
+        {
+            resultText.gameObject.SetActive(true);
+            resultText.text = "Game Over\nRatings: " + string.Join(", ", ratings);
+        }
 
         Time.timeScale = 0f;
     }
