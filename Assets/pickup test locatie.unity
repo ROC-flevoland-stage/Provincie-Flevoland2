@@ -742,10 +742,14 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3340246272574473522, guid: 68d4d019f3bf07b4eb456cf2148af338, type: 3}
       insertIndex: -1
 <<<<<<< Updated upstream:Assets/pickup test locatie.unity
+<<<<<<< Updated upstream:Assets/pickup test locatie.unity
       addedObject: {fileID: 1582594974}
     - targetCorrespondingSourceObject: {fileID: 3340246272574473522, guid: 68d4d019f3bf07b4eb456cf2148af338, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1582594979}
+=======
+      addedObject: {fileID: 1298366610}
+>>>>>>> Stashed changes:Assets/Scenes/pickup test locatie.unity
 =======
       addedObject: {fileID: 1298366610}
 >>>>>>> Stashed changes:Assets/Scenes/pickup test locatie.unity
@@ -1001,6 +1005,7 @@ MonoBehaviour:
   m_RenderingLayers: 1
   m_ShadowRenderingLayers: 1
 <<<<<<< Updated upstream:Assets/pickup test locatie.unity
+<<<<<<< Updated upstream:Assets/pickup test locatie.unity
 --- !u!1 &1582594973 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3340246272574473522, guid: 68d4d019f3bf07b4eb456cf2148af338, type: 3}
@@ -1008,6 +1013,8 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &1582594974
 =======
+=======
+>>>>>>> Stashed changes:Assets/Scenes/pickup test locatie.unity
 --- !u!1 &1703125170
 GameObject:
   m_ObjectHideFlags: 0
@@ -1027,12 +1034,16 @@ GameObject:
   m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!114 &1703125171
+<<<<<<< Updated upstream:Assets/pickup test locatie.unity
+>>>>>>> Stashed changes:Assets/Scenes/pickup test locatie.unity
+=======
 >>>>>>> Stashed changes:Assets/Scenes/pickup test locatie.unity
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< Updated upstream:Assets/pickup test locatie.unity
 <<<<<<< Updated upstream:Assets/pickup test locatie.unity
   m_GameObject: {fileID: 1582594973}
   m_Enabled: 1
@@ -1042,6 +1053,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::NPCAction
 --- !u!114 &1582594979
 =======
+=======
+>>>>>>> Stashed changes:Assets/Scenes/pickup test locatie.unity
   m_GameObject: {fileID: 1703125170}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -1068,12 +1081,16 @@ MonoBehaviour:
   m_CursorLockBehavior: 0
   m_ScrollDeltaPerTick: 6
 --- !u!114 &1703125172
+<<<<<<< Updated upstream:Assets/pickup test locatie.unity
+>>>>>>> Stashed changes:Assets/Scenes/pickup test locatie.unity
+=======
 >>>>>>> Stashed changes:Assets/Scenes/pickup test locatie.unity
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< Updated upstream:Assets/pickup test locatie.unity
 <<<<<<< Updated upstream:Assets/pickup test locatie.unity
   m_GameObject: {fileID: 1582594973}
   m_Enabled: 1
@@ -1151,6 +1168,8 @@ Transform:
 --- !u!114 &1654553467
 MonoBehaviour:
 =======
+=======
+>>>>>>> Stashed changes:Assets/Scenes/pickup test locatie.unity
   m_GameObject: {fileID: 1703125170}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -1162,11 +1181,15 @@ MonoBehaviour:
   m_DragThreshold: 10
 --- !u!4 &1703125173
 Transform:
+<<<<<<< Updated upstream:Assets/pickup test locatie.unity
+>>>>>>> Stashed changes:Assets/Scenes/pickup test locatie.unity
+=======
 >>>>>>> Stashed changes:Assets/Scenes/pickup test locatie.unity
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< Updated upstream:Assets/pickup test locatie.unity
 <<<<<<< Updated upstream:Assets/pickup test locatie.unity
   m_GameObject: {fileID: 1654553460}
   m_Enabled: 1
@@ -1292,6 +1315,8 @@ PrefabInstance:
 --- !u!1001 &7326835527233359449
 PrefabInstance:
 =======
+=======
+>>>>>>> Stashed changes:Assets/Scenes/pickup test locatie.unity
   m_GameObject: {fileID: 1703125170}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -1303,6 +1328,9 @@ PrefabInstance:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1863166275
 GameObject:
+<<<<<<< Updated upstream:Assets/pickup test locatie.unity
+>>>>>>> Stashed changes:Assets/Scenes/pickup test locatie.unity
+=======
 >>>>>>> Stashed changes:Assets/Scenes/pickup test locatie.unity
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1524,13 +1552,19 @@ SceneRoots:
   - {fileID: 1381762448}
   - {fileID: 514795534}
 <<<<<<< Updated upstream:Assets/pickup test locatie.unity
+<<<<<<< Updated upstream:Assets/pickup test locatie.unity
   - {fileID: 1374939326}
   - {fileID: 494386624}
 =======
+=======
+>>>>>>> Stashed changes:Assets/Scenes/pickup test locatie.unity
   - {fileID: 1174595394}
   - {fileID: 1298366606}
   - {fileID: 457554214}
   - {fileID: 1340427768}
   - {fileID: 1703125173}
   - {fileID: 1863166284}
+<<<<<<< Updated upstream:Assets/pickup test locatie.unity
+>>>>>>> Stashed changes:Assets/Scenes/pickup test locatie.unity
+=======
 >>>>>>> Stashed changes:Assets/Scenes/pickup test locatie.unity

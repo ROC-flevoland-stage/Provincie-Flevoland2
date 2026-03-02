@@ -10,6 +10,9 @@ TagManager:
   tags:
   - File
   - NPC
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
   layers:
   - Default
