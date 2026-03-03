@@ -16,12 +16,18 @@ public class ActivityMarker : MonoBehaviour
     public Material Active;
     public Material Inactive;
 
-    private Vector3 home;
-    private bool isActive = true;
+    [Header("Private")]
+    [SerializeField] private Vector3 home;
+    [SerializeField] private ParticleSystem particles;
+    [SerializeField] private bool isActive = true;
 
     void Start()
     {
         home = transform.position;
+        if (particles == null)
+            particles = GetComponentInChildren<ParticleSystem>();
+
+        SetMarkerActive(isActive);  // Initialize the marker's state
     }
 
     void Update()
@@ -53,6 +59,12 @@ public class ActivityMarker : MonoBehaviour
         {
             transform.position = home;
             transform.rotation = Quaternion.identity;
+        }
+
+        if (particles != null)
+        {
+            if (active) particles.Play();
+            else particles.Stop();
         }
     }
 
