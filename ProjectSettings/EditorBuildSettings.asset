@@ -9,7 +9,7 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: a56783a1f16fc4e4bb0386803b9ddb70
   - enabled: 1
-    path: Assets/Scenes/US 2 Character Creator.unity
+    path: Assets/Scenes/US 2 Updated Character Sheet.unity
     guid: 3f68cdc99cedbb44ca6a7a25e44d5442
   - enabled: 1
     path: Assets/Scenes/MinigameUno.unity
