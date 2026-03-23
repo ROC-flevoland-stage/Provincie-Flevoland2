@@ -9,7 +9,7 @@ public class FileDeath : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        var file = other.GetComponent<File>();
+        var file = other.GetComponent<SpawnedFile>();
         if (file == null) return;
         if (requireTag && !other.CompareTag(requiredTag)) return;
 
