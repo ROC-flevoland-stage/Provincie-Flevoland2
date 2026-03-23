@@ -1,0 +1,4 @@
+﻿0:Hallo, ik ben Bill Board.
+0:Zoals je kan zien hebben we nog niet een grote stad gebouwd.
+0:Deze gebouwen zijn er alleen om je een idee te geven van hoe het eruit kan zien.
+0:In de uiteindelijke versie van het spel zal de stad veel groter en gedetailleerder zijn.<c></c>
