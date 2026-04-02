@@ -636,25 +636,35 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::StamperGame
   paperImage: {fileID: 418668845}
   paperSprites:
-  - {fileID: 21300000, guid: 89492712b9e0f69479174d713b460ab0, type: 3}
-  - {fileID: 21300000, guid: d3b0ee95b4c32b040a58311eb3c30f04, type: 3}
-  - {fileID: 21300000, guid: d9b768bcade81e743940c3a0f878b3ae, type: 3}
-  - {fileID: 21300000, guid: be87694194ab4954b81b54fc0669d9d0, type: 3}
-  - {fileID: 21300000, guid: 1ceabba45aded3c41a62904120133b08, type: 3}
-  - {fileID: 21300000, guid: 5262369a2375e9c45879204e38e0ab40, type: 3}
-  - {fileID: 21300000, guid: c30ca2c4f3253a04985c57f233f10406, type: 3}
-  - {fileID: 21300000, guid: 69f04995a82910148a27d7b86c4c0be6, type: 3}
-  - {fileID: 21300000, guid: b00d5941e8d3d65498d65e9436976c5f, type: 3}
-  - {fileID: 21300000, guid: e7d40515975e07c4f84618055dfd34ec, type: 3}
+  - {fileID: 21300000, guid: 3aef947ee624cdf47a8ccf192ad0a27a, type: 3}
+  - {fileID: 21300000, guid: dd6556e81e06f3c4aa95cf7c8e5bf15a, type: 3}
+  - {fileID: 21300000, guid: 2419452f27f371d4f9a9cd952fced09a, type: 3}
+  - {fileID: 21300000, guid: c2df4998b092bcd4e8fe5f5570231e8b, type: 3}
+  - {fileID: 21300000, guid: 9c3184e86837df644824a97318c1e4dc, type: 3}
+  - {fileID: 21300000, guid: 191a7afb8e70fdb4195fc11a000ebcb3, type: 3}
+  - {fileID: 21300000, guid: 8b36a2c38d4e8a842b2a3c81a0ad820c, type: 3}
+  - {fileID: 21300000, guid: 155a248e8746b154eae5d3abec70c01d, type: 3}
+  - {fileID: 21300000, guid: ac0114cdcc7c56b4b9534595bbfde511, type: 3}
+  - {fileID: 21300000, guid: 3d2a17e5cf7693446baa6ee85b6514f6, type: 3}
+  - {fileID: 21300000, guid: d15580100af35074f99afbcba66dc0ac, type: 3}
+  - {fileID: 21300000, guid: 8f03356853a32694994e9c49a9c2c62e, type: 3}
+  - {fileID: 21300000, guid: 799df15126d3a0d46ae1cfad00f992a5, type: 3}
+  - {fileID: 21300000, guid: 56d2f6c1485c63547aabecec196afeed, type: 3}
+  - {fileID: 21300000, guid: 5b73ef895bc133b419fe92b934befc93, type: 3}
+  - {fileID: 21300000, guid: 50482ed3002a57d4fa469325a1bcf6d4, type: 3}
+  - {fileID: 21300000, guid: edb2c8247e3b17a4594fe360e68e0148, type: 3}
+  - {fileID: 21300000, guid: 4677011ed2ce5244b9188fada9bf34d4, type: 3}
+  - {fileID: 21300000, guid: e2b0c6d4dc6b6184daa4715db8473d43, type: 3}
+  - {fileID: 21300000, guid: f95dff62f2baa83499e19750ddd5b141, type: 3}
   timerText: {fileID: 2066213721}
   resultText: {fileID: 860805766}
   NewsratedText: {fileID: 330496641}
   audioSource: {fileID: 964386155}
   stampSound: {fileID: 0}
   gameTime: 300
-  papersToStampLimit: 10
-  yesLimit: 5
-  noLimit: 5
+  papersToStampLimit: 20
+  yesLimit: 10
+  noLimit: 10
 --- !u!4 &549216987
 Transform:
   m_ObjectHideFlags: 0
@@ -1268,7 +1278,7 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.082772255, g: 1, b: 0, a: 1}
+    m_HighlightedColor: {r: 0.30693102, g: 0.93207544, b: 0.12486295, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
@@ -1739,9 +1749,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Primary Mouse = Agree
+  m_text: 'Left Click = Belangrijk
 
-    Secondary Mouse = Disagree
+    Right Click = Niet Belangrijk
 
 '
   m_isRightToLeft: 0
@@ -1770,8 +1780,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 18
-  m_fontSizeBase: 18
+  m_fontSize: 25
+  m_fontSizeBase: 25
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
