@@ -1,0 +1,48 @@
+-1: 1 - Zeer onveilig
+-2: 2 - Erg onveilig
+-3: 3 - Onveilig
+-4: 4 - Redelijk onveilig
+-5: 5 - Neutraal
+-6: 6 - Redelijk veilig
+-7: 7 - Veilig
+-8: 8 - Erg veilig
+-9: 9 - Heel veilig
+-10: 10 - Volledig veilig
+-11: Weet ik niet / Geen antwoord
+
+0:Hoe veilig voel je je in je omgeving?
+0:Geef een score van 1 tot 10.
+0:<o>-1:1,-2:2,-3:3,-4:4,-5:5,-6:6,-7:7,-8:8,-9:9,-10:10,-11:11</o>
+
+1:(change:veiligheid_omgeving,1)
+1:Bedankt voor je feedback!<c></c>
+
+2:(change:veiligheid_omgeving,2)
+2:Bedankt voor je feedback!<c></c>
+
+3:(change:veiligheid_omgeving,3)
+3:Bedankt voor je feedback!<c></c>
+
+4:(change:veiligheid_omgeving,4)
+4:Bedankt voor je feedback!<c></c>
+
+5:(change:veiligheid_omgeving,5)
+5:Bedankt voor je feedback!<c></c>
+
+6:(change:veiligheid_omgeving,6)
+6:Bedankt voor je feedback!<c></c>
+
+7:(change:veiligheid_omgeving,7)
+7:Bedankt voor je feedback!<c></c>
+
+8:(change:veiligheid_omgeving,8)
+8:Bedankt voor je feedback!<c></c>
+
+9:(change:veiligheid_omgeving,9)
+9:Bedankt voor je feedback!<c></c>
+
+10:(change:veiligheid_omgeving,10)
+10:Bedankt voor je feedback!<c></c>
+
+11:(change:veiligheid_omgeving,0)
+11:Bedankt voor je feedback!<c></c>
