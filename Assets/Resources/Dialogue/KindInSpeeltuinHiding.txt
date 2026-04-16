@@ -1,0 +1,4 @@
+﻿0:Wat!?
+0:{shake}Hoe heb je mij gevonden?{/shake}
+0:{wave}Oké...{/wave} Jij wint.
+0:Dit was leuk, dankjewel!(change:verstopertjeActief,false)<c></c>

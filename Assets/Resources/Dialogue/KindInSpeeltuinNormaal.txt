@@ -1,0 +1,19 @@
+﻿-1: Ja
+-2: Nee
+
+
+0:Ik verveel me...
+0:Wil je een speletje spelen?<o>-1:1,-2:0</o>
+0:Oh, oké...<c></c>
+
+
+1:Jeej!
+1:Laten we verstoppertje spelen!
+1:Ik verstop en jij moet me zoeken!
+1:En ik ga me verstoppen op een plek die je {shake}nooit{/shake} zal vinden!(change:verstopertjeActief,true)<c></c>
+
+2:Hoi.
+2:De glijbaan is leuk!<c></c>
+
+3:Hallo!
+3:Kijk hoe sterk ik ben!<c></c>
