@@ -660,7 +660,7 @@ MonoBehaviour:
   resultText: {fileID: 860805766}
   NewsratedText: {fileID: 330496641}
   audioSource: {fileID: 964386155}
-  stampSound: {fileID: 0}
+  stampSound: {fileID: 8300000, guid: 29809155077cc4b4393d69af692a36d2, type: 3}
   gameTime: 300
   papersToStampLimit: 20
   yesLimit: 10
