@@ -17,7 +17,7 @@ public class CubeText : MonoBehaviour
 
         tmp = GetComponentInChildren<TMP_Text>();
         if (tmp == null)
-        {
+        { // Maakt een nieuwe object aan als er geen TextMeshPro component gevonden wordt. Ik ga dit mogelijk scrappen omdat het best.
             var go = new GameObject("CubeTextLabel");
             go.transform.SetParent(transform, false);
             go.transform.localPosition = offset;

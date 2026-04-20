@@ -25,7 +25,7 @@ public class GameManager : MonoBehaviour
         UpdateUI();
     }
 
-    // Called by SortZone with ratingValue (1-5)
+    // Sortzone called dit op met 1-5 rating
     public void PlaceCube(int rating, GameObject file)
     {
         if (gameEnded) return;
@@ -42,7 +42,7 @@ public class GameManager : MonoBehaviour
             EndGame();
     }
 
-    // Backwards-compatible helpers (optional mapping)
+    // Origineel gedeelte voor correct/wrong file, er in gehouden als ik er nog iets mee wil doen in de toekomst.
     public void CorrectFile(GameObject file)
     {
         PlaceCube(5, file);
@@ -52,13 +52,13 @@ public class GameManager : MonoBehaviour
     {
         PlaceCube(1, file);
     }
-
+    // Update de UI met het aantal cubes dat nog geplaatst moet worden
     void UpdateUI()
     {
         if (cubesLeftText != null)
             cubesLeftText.text = "Cubes left: " + Mathf.Max(0, totalCubes - cubesPlaced);
     }
-
+    // Einde van het spel, toont resultaten en pauzeert het spel
     void EndGame()
     {
         gameEnded = true;

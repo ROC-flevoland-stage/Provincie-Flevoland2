@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class SortZone : MonoBehaviour
 {
-    // When an object with the Unity tag "File" enters this trigger, destroy it.
+    // Destroy de file als het komt in de sortzone.
     void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("File"))
