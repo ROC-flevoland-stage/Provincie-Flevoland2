@@ -15,13 +15,15 @@ public class DialogueVariables : MonoBehaviour
                 _instance = FindAnyObjectByType<DialogueVariables>();
                 if (_instance == null)
                 {
-                    GameObject animatorObject = new GameObject("DialogueVariables");
-                    _instance = animatorObject.AddComponent<DialogueVariables>();
+                    GameObject go = new GameObject("DialogueVariables");
+                    _instance = go.AddComponent<DialogueVariables>();
                 }
             }
             return _instance;
         }
     }
+
+    private Dictionary<string, (Type type, object value, Action<object> callback)> dialogueVariables = new();
 
     private void Awake()
     {
@@ -29,55 +31,52 @@ public class DialogueVariables : MonoBehaviour
         {
             _instance = this;
             DontDestroyOnLoad(gameObject);
+            InitializeVariables();
         }
         else Destroy(gameObject);
     }
 
-    private Dictionary<string, (Type, object, Action<object>)> dialogueVariables = new();
+    private void InitializeVariables()
+    {
+        // Hier maken we alle variabelen aan die de game nodig heeft
+        CreateVariable<bool>("wil je dit geven", false);
+        CreateVariable<bool>("portemonnee_geaccepteerd", false);
+        CreateVariable<bool>("portemonnee_teruggegeven", false);
+        CreateVariable<bool>("help_portemonnee_zoeken", false);
+        CreateVariable<int>("financiele_situatie", 0);
+    }
 
     public void CreateVariable<T>(string name, T value, Action<object> onChanged = null)
     {
-        if (dialogueVariables.ContainsKey(name))
-        {
-            Debug.LogWarning($"Variable with name '{name}' already exists.");
-            return;
-        }
-        dialogueVariables[name] = (typeof(T), value, onChanged);
+        if (!dialogueVariables.ContainsKey(name))
+            dialogueVariables[name] = (typeof(T), value, onChanged);
     }
 
     public void SetVariable<T>(string name, T newValue)
     {
-        if (dialogueVariables.TryGetValue(name, out var value))
+        if (dialogueVariables.TryGetValue(name, out var varData))
         {
-            if (value.Item1 == typeof(T) || typeof(T) == typeof(object))
-            {
-                dialogueVariables[name] = (value.Item1, newValue, value.Item3);
-                value.Item3?.Invoke(newValue);
-            }
-            else
-                throw new InvalidCastException($"Variable with name '{name}' is of type '{value.Item1}', not '{typeof(T)}'.");
+            dialogueVariables[name] = (varData.type, newValue, varData.callback);
+            varData.callback?.Invoke(newValue);
         }
-        else
-            throw new KeyNotFoundException($"Variable with name '{name}' not found.");
-    }
-
-    public Type GetVariableType(string name)
-    {
-        if (dialogueVariables.TryGetValue(name, out var value))
-            return value.Item1;
-        Debug.LogError($"Variable with name '{name}' not found.");
-        return null;
+        else Debug.LogError($"Variable '{name}' niet gevonden!");
     }
 
     public T GetVariable<T>(string name)
     {
-        if (dialogueVariables.TryGetValue(name, out var value))
-        {
-            if (value.Item1 == typeof(T) || typeof(T) == typeof(object))
-                return (T)value.Item2;
-            Debug.LogError($"Variable with name '{name}' is of type '{value.Item1}', not '{typeof(T)}'.");
-        }
-        Debug.LogError($"Variable with name '{name}' not found.");
+        if (dialogueVariables.TryGetValue(name, out var varData))
+            return (T)varData.value;
+
+        Debug.LogError($"Variable '{name}' niet gevonden!");
         return default;
+    }
+
+    public Type GetVariableType(string name) => dialogueVariables.ContainsKey(name) ? dialogueVariables[name].type : null;
+
+    // Handige methode om een callback (zoals item weggooien) later toe te voegen
+    public void RegisterCallback(string name, Action<object> callback)
+    {
+        if (dialogueVariables.TryGetValue(name, out var varData))
+            dialogueVariables[name] = (varData.type, varData.value, callback);
     }
 }

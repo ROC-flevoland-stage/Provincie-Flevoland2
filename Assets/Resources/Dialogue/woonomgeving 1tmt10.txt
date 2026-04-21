@@ -1,16 +1,16 @@
--1: 1 - Heel ontevreden
--2: 2
--3: 3
--4: 4
+-1: 1 - Zeer ontevreden
+-2: 2 - Erg ontevreden
+-3: 3 - Ontevreden
+-4: 4 - Redelijk ontevreden
 -5: 5 - Neutraal
--6: 6
--7: 7
--8: 8
--9: 9
--10: 10 - Heel tevreden
--11: Weet ik niet / geen mening
+-6: 6 - Redelijk tevreden
+-7: 7 - Tevreden
+-8: 8 - Erg tevreden
+-9: 9 - Heel tevreden
+-10: 10 - Volledig tevreden
+-11: 11 - weet ik niet/geen antwoord op
 
-0:Hoe tevreden ben je met je leven in het algemeen?
+0:Hoe tevreden ben je met de hoeveelheid groen en natuur in je omgeving?
 0:Geef een score van 1 tot 10.
 0:<o>-1:1,-2:2,-3:3,-4:4,-5:5,-6:6,-7:7,-8:8,-9:9,-10:10,-11:11</o>
 
@@ -45,4 +45,4 @@
 10:Bedankt voor je antwoord.<c></c>
 
 11:(change:leven_score,0)
-11:Bedankt voor je antwoord.<c></c>
+11:Bedankt voor je feedback.<c></c>
