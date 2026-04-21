@@ -142,6 +142,15 @@ public class DialogueManager : MonoBehaviour
         isDialogueReady = false;
         isChoiceActive = false;
 
+        // Stop player movement
+        PlayerMovement playerMovement = FindAnyObjectByType<PlayerMovement>();
+        if (playerMovement != null)
+            playerMovement.LockMovement = true;
+
+        // Show the cursor
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+
         // Set the current dialogue tree
         currentdialogue = dialogue;
 
@@ -189,6 +198,15 @@ public class DialogueManager : MonoBehaviour
 
         currentdialogue = null;
         StartCoroutine(OpenTextbox(true));
+
+        // Allow player movement
+        PlayerMovement playerMovement = FindAnyObjectByType<PlayerMovement>();
+        if (playerMovement != null)
+            playerMovement.LockMovement = false;
+
+        // Hide the cursor
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 
     /// <summary>

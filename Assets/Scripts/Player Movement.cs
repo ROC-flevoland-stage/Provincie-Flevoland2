@@ -20,6 +20,8 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 velocity;
     private float xRotation = 0f;
 
+    public bool LockMovement { get; set; } = false;
+
     void Awake()
     {
         controller = GetComponent<CharacterController>();
@@ -27,12 +29,20 @@ public class PlayerMovement : MonoBehaviour
 
     void Start()
     {
-        //Cursor.lockState = CursorLockMode.Locked;
-        //Cursor.visible = false;               Disabled cursor hiding cuz fast travel menu needs it
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 
     void Update()
     {
+        if (LockMovement)
+        {
+            // Only apply gravity
+            velocity.y += gravity * Time.deltaTime;
+            controller.Move(velocity * Time.deltaTime);
+            return;
+        }
+
         Look();
         Move();
     }
