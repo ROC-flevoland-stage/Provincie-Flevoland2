@@ -4,8 +4,11 @@ public class BasketballGame : MonoBehaviour
 {
     public GameObject ballPrefab;
     public Transform handPoint;
-    public Transform hoopTarget;
+    // public Transform hoopTarget;   Removed cuz we need to hit 1-10 and not just 1 hoop
     private GameObject currentBall;
+    public Camera playerCamera;
+    public float shootCooldown = 1.5f;
+    private bool canShoot = true;
 
     void Start()
     {
@@ -14,7 +17,7 @@ public class BasketballGame : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Mouse0) && canShoot)
         {
             Shoot();
         }
@@ -34,11 +37,10 @@ public class BasketballGame : MonoBehaviour
 
         Rigidbody rb = currentBall.GetComponent<Rigidbody>();
 
-        Vector3 direction = (hoopTarget.position - currentBall.transform.position);
-
-        rb.AddForce(direction.normalized * 20f + Vector3.up * 8f, ForceMode.Impulse);
+        rb.AddForce((playerCamera.transform.forward + Vector3.up * 0.8f) * 15f, ForceMode.Impulse);
 
         currentBall = null;
+
 
     }
 }
