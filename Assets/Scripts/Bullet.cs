@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public class Bullet : MonoBehaviour
@@ -6,30 +5,48 @@ public class Bullet : MonoBehaviour
     public float speed = 20f;
     public float maxLifetime = 5f;
 
+    Rigidbody rb;
+    Vector3 dir = Vector3.forward;
     float lifetime;
+
+    void Awake()
+    {
+        rb = GetComponent<Rigidbody>();
+    }
+
+    // Call immediately after Instantiate to set travel direction and optional speed
+    public void Initialize(Vector3 direction, float speedOverride = -1f)
+    {
+        if (direction.sqrMagnitude > 0f)
+            dir = direction.normalized;
+
+        if (speedOverride > 0f)
+            speed = speedOverride;
+
+        transform.rotation = Quaternion.LookRotation(dir);
+
+        if (rb != null)
+            rb.linearVelocity = dir * speed;
+    }
 
     void Update()
     {
-        // Bullet beweegt in de richting van zijn forward vector
-        transform.position += transform.forward * speed * Time.deltaTime;
-
-        // destroy na maxLifetime seconden zodat het niet oneindig blijft bestaan
         lifetime += Time.deltaTime;
         if (lifetime >= maxLifetime)
             Destroy(gameObject);
     }
 
-    void OnTriggerEnter(Collider other)
+    void FixedUpdate()
     {
-        // Verwijder de bullet als hij een object raakt met de tag "Hit"
-        if (other.CompareTag("Hit"))
-        {
-            Destroy(gameObject);
-        }
+        if (rb == null)
+            transform.position += dir * speed * Time.fixedDeltaTime;
+        else
+            rb.linearVelocity = dir * speed; // keep velocity consistent
     }
 
-    internal void SetDirection(Vector3 direction)
+    void OnTriggerEnter(Collider other)
     {
-        throw new NotImplementedException();
+        if (other.CompareTag("Hit"))
+            Destroy(gameObject);
     }
 }
