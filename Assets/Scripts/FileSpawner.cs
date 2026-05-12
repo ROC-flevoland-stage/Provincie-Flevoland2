@@ -1,42 +1,77 @@
 using UnityEngine;
+using TMPro;
 
 public class FileSpawner : MonoBehaviour
 {
-    public GameObject GreenCubeFile;
-    public GameObject RedCubeFile;
-    public float spawnInterval = 2f;
-    public Vector3 spawnAreaSize = new Vector3(5f, 0f, 5f);
+    public GameObject[] cubesToSpawn;
+    public string[] spawnLabels; // edit these in the Inspector to change text per cube
+    public GameManager gameManager;
 
-    float timer;
+    [Header("UI")]
+    public TMP_Text spawnIndicatorText; // assign a TextMeshProUGUI element in the Canvas (top middle)
+
+    GameObject currentInstance;
+    int spawnIndex;
 
     void Start()
     {
-        timer = 0f;
+        if (gameManager == null)
+            gameManager = FindObjectOfType<GameManager>();
+
+        spawnIndex = 0;
+        TrySpawn();
     }
 
     void Update()
     {
-        timer += Time.deltaTime;
-        if (timer < spawnInterval) return;
-
-        SpawnRandomCube();
-        timer = 0f;
+        if (currentInstance == null)
+            TrySpawn();
     }
 
-    void SpawnRandomCube()
+    void TrySpawn()
     {
-        if (GreenCubeFile == null || RedCubeFile == null) return;
+        if (spawnIndex >= cubesToSpawn.Length) return;
+        var prefab = cubesToSpawn[spawnIndex];
+        if (prefab == null) return;
+        if (gameManager != null && spawnIndex >= gameManager.totalCubes) return;
 
-        GameObject prefabToSpawn = Random.value < 0.5f ? GreenCubeFile : RedCubeFile;
+        // spawned op spawner
+        currentInstance = Instantiate(prefab, transform.position, Quaternion.identity);
 
-        Vector3 half = spawnAreaSize * 0.5f;
-        Vector3 localOffset = new Vector3(
-            Random.Range(-half.x, half.x),
-            Random.Range(0f, spawnAreaSize.y),
-            Random.Range(-half.z, half.z)
-        );
+        // kiest de label
+        string label = null;
+        if (spawnLabels != null && spawnLabels.Length > spawnIndex && !string.IsNullOrEmpty(spawnLabels[spawnIndex]))
+            label = spawnLabels[spawnIndex];
 
-        Vector3 spawnPosition = transform.position + transform.TransformVector(localOffset);
-        Instantiate(prefabToSpawn, spawnPosition, Quaternion.identity);
+        var fileComp = currentInstance.GetComponent<SpawnedFile>();
+        if (fileComp != null)
+        {
+            fileComp.index = spawnIndex;
+            if (string.IsNullOrEmpty(label))
+            {
+                // bestaande label blijft zolang er iets staat anders default het naar item
+                label = !string.IsNullOrEmpty(fileComp.label) ? fileComp.label : "Item " + (spawnIndex + 1);
+            }
+            fileComp.label = label;
+        }
+        else
+        {
+            if (string.IsNullOrEmpty(label))
+                label = "Item " + (spawnIndex + 1);
+        }
+
+        // If prefab contains a TextMeshPro (3D) element, set it
+        var tm3 = currentInstance.GetComponentInChildren<TMP_Text>();
+        if (tm3 != null)
+            tm3.text = label;
+
+        // Update top-middle UI indicator with the same label
+        if (spawnIndicatorText != null)
+        {
+            spawnIndicatorText.gameObject.SetActive(true);
+            spawnIndicatorText.text = label;
+        }
+
+        spawnIndex++;
     }
 }
