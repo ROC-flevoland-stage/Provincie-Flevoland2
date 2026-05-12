@@ -4,7 +4,7 @@ using TMPro;
 public class QuestionsManager : MonoBehaviour
 {
     public TMP_Text questionText;      // assign hier de text UI
-    public TMP_Text progressText;      // 1-11
+    public TMP_Text progressText;      // 1-10
     public string[] questions;         // hier 11 questions assignen
 
     int currentIndex;

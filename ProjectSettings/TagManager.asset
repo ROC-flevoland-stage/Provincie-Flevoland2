@@ -6,6 +6,7 @@ TagManager:
   tags:
   - File
   - QuestionsManager
+  - Hit
   layers:
   - Default
   - TransparentFX
