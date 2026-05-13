@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class StamperGame : MonoBehaviour
 {
@@ -102,5 +103,6 @@ public class StamperGame : MonoBehaviour
     {
         gameOver = true;
         resultText.text = endMessage;
+        SceneManager.LoadScene("E3Demo");
     }
 }

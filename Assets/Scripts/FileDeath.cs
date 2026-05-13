@@ -14,9 +14,7 @@ public class FileDeath : MonoBehaviour
         if (requireTag && !other.CompareTag(requiredTag)) return;
 
         if (gameManager == null)
-            gameManager = FindObjectOfType<GameManager>();
+            gameManager = FindFirstObjectByType<GameManager>();
         if (gameManager == null) return;
-
-        gameManager.WrongFile(other.gameObject);
     }
 }

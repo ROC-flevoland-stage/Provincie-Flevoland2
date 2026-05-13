@@ -1,5 +1,6 @@
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class QuestionsManager : MonoBehaviour
 {
@@ -13,6 +14,9 @@ public class QuestionsManager : MonoBehaviour
 
     void Start()
     {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+
         if (questions == null || questions.Length == 0)
         {
             Debug.LogWarning("QuestionsManager: no questions assigned.");
@@ -62,5 +66,6 @@ public class QuestionsManager : MonoBehaviour
             progressText.text = $"Finished";
 
         Debug.Log("Quiz finished. Answers: " + string.Join(", ", System.Array.ConvertAll(answers, a => a.ToString())));
+        SceneManager.LoadScene("E3Demo");
     }
 }

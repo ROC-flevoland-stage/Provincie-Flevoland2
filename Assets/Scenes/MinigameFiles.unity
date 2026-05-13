@@ -2039,6 +2039,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
   totalCubes: 10
+  cubesPlaced: 0
   cubesLeftText: {fileID: 2135874511}
   resultText: {fileID: 0}
 --- !u!4 &769160488
@@ -2199,6 +2200,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 724950d90464c754389b1f0aa4604357, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SortZone
+  rating: 3
+  gameManager: {fileID: 769160487}
 --- !u!65 &796197726
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3021,6 +3024,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 724950d90464c754389b1f0aa4604357, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SortZone
+  rating: 1
+  gameManager: {fileID: 769160487}
 --- !u!1 &1225179809
 GameObject:
   m_ObjectHideFlags: 0
@@ -3053,6 +3058,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 724950d90464c754389b1f0aa4604357, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SortZone
+  rating: 2
+  gameManager: {fileID: 769160487}
 --- !u!65 &1225179811
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4332,6 +4339,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 724950d90464c754389b1f0aa4604357, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SortZone
+  rating: 4
+  gameManager: {fileID: 769160487}
 --- !u!65 &1553375094
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5717,6 +5726,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 724950d90464c754389b1f0aa4604357, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SortZone
+  rating: 5
+  gameManager: {fileID: 769160487}
 --- !u!65 &1775840696
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5827,7 +5838,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1867191045
 MonoBehaviour:
   m_ObjectHideFlags: 0

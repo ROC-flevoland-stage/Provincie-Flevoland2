@@ -1,10 +1,11 @@
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
     public int totalCubes = 10;
-    int cubesPlaced;
+    public int cubesPlaced;
     int[] ratings;
 
     [Header("UI (TextMeshPro)")]
@@ -15,6 +16,9 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+
         ratings = new int[totalCubes];
         cubesPlaced = 0;
         gameEnded = false;
@@ -42,16 +46,6 @@ public class GameManager : MonoBehaviour
             EndGame();
     }
 
-    // Origineel gedeelte voor correct/wrong file, er in gehouden als ik er nog iets mee wil doen in de toekomst.
-    public void CorrectFile(GameObject file)
-    {
-        PlaceCube(5, file);
-    }
-
-    public void WrongFile(GameObject file)
-    {
-        PlaceCube(1, file);
-    }
     // Update de UI met het aantal cubes dat nog geplaatst moet worden
     void UpdateUI()
     {
@@ -70,5 +64,6 @@ public class GameManager : MonoBehaviour
         }
 
         Time.timeScale = 0f;
+        SceneManager.LoadScene("E3Demo");
     }
 }
