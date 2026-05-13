@@ -1,0 +1,22 @@
+-1:ja
+-2:nee
+
+0:Hoi!
+0:Ik heb je hulp nodig met iets belangrijks.
+0:Ik ben mijn portemonnee ergens kwijtgeraakt.
+0:Ik kan hem nergens meer vinden.
+0:Zou je me willen helpen zoeken?
+0:Er zitten belangrijke spullen in, dus ik hoop echt dat ik hem terugvind.
+0:Als je hem vindt, wil je hem dan alsjeblieft terugbrengen?
+0:Wil je me helpen zoeken?<o>-1:1,-2:2</o>
+
+1:(change:help_portemonnee_zoeken,true)
+1:Dankjewel!
+1:Dat stelt me echt gerust.
+1:Ik ben hem hier ergens in de buurt verloren.
+1:Kom je terug als je hem hebt gevonden?<c></c>
+
+2:(change:help_portemonnee_zoeken,false)
+2:Oh, oke.
+2:Dan zoek ik zelf nog wel verder.
+2:Ik hoop echt dat ik hem snel terugvind.<c></c>

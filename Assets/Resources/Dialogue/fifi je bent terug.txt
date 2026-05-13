@@ -1,0 +1,13 @@
+-1:ja
+-2:nee
+
+0:Wil je dit aan deze persoon geven?
+0:<o>-1:1,-2:2</o>
+
+
+
+1:ja (change:wil je dit geven,true)
+1:FIFI! JE BENT TERUG!
+1:Dankjewel! je bent mijn held.<c></c>
+
+2:nee<c></c>
