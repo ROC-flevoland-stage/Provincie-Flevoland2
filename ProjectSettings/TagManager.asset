@@ -4,6 +4,9 @@
 TagManager:
   serializedVersion: 3
   tags:
+  - item
+  - NPC
+  - Ball
   - File
   - QuestionsManager
   - Hit
