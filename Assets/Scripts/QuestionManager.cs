@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class QuestionManager : MonoBehaviour
 {
@@ -43,6 +44,10 @@ public class QuestionManager : MonoBehaviour
         if (currentIndex >= questions.Count)
         {
             Debug.Log("All questions completed!");
+
+            //Cursor.lockState = CursorLockMode.None;
+            SceneManager.LoadScene("E3Demo");
+
             return;
         }
 
