@@ -1,3 +1,4 @@
+using System.Collections;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -43,7 +44,8 @@ public class SjoelenMinigame : MonoBehaviour
     private static SjoelenMinigame instance;
 
     // variables declarations
-    private gameStates gameState = gameStates.Aiming;
+    private gameStates gameState = gameStates.Menu;
+    private bool finished = false;
 
     //gameobjects
     [SerializeField]
@@ -52,6 +54,12 @@ public class SjoelenMinigame : MonoBehaviour
     private GameObject puckPrefab;
     [SerializeField]
     private GameObject questionText;
+    [SerializeField] 
+    private GameObject GameOverlay;
+    [SerializeField]
+    private GameObject StartScreen;
+    [SerializeField]
+    private GameObject EndScreen;
 
     //puck spawning
     [SerializeField]
@@ -102,7 +110,8 @@ public class SjoelenMinigame : MonoBehaviour
         curQuestion += 1;
         if(curQuestion >= questions.Length)
         {
-            gameState = gameStates.Menu;
+            finished = true;
+            EndGame();  
         }
         else
         {
@@ -114,7 +123,27 @@ public class SjoelenMinigame : MonoBehaviour
     private void AimingBehavior()
     {
         puckShootDelayTimer -= Time.deltaTime;
-        
+
+        if (Input.GetKeyDown(KeyCode.Alpha1)) { 
+            PuckTrigger(1);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            PuckTrigger(2);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            PuckTrigger(3);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha4))
+        {
+            PuckTrigger(4);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha5))
+        {
+            PuckTrigger(5);
+        }
+
         if (!Input.GetKey(KeyCode.LeftControl)) //If user is not holding L-ctrl
         {
             Cursor.lockState = CursorLockMode.Locked; // Keep cursor locked
@@ -151,6 +180,25 @@ public class SjoelenMinigame : MonoBehaviour
     }
     private void MenuBehavior()
     {
+        if (!finished) 
+        {
+            
+        } else
+        {
 
+        }
+    }
+    public void StartGame()
+    {
+        gameState = gameStates.Aiming;
+        StartScreen.SetActive(false);
+        GameOverlay.SetActive(true);
+
+    }
+    public void EndGame()
+    {
+        gameState = gameStates.Menu;
+        EndScreen.SetActive(true );
+        GameOverlay.SetActive(false);
     }
 }
