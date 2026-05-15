@@ -1,3 +1,4 @@
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -50,12 +51,29 @@ public class SjoelenMinigame : MonoBehaviour
     [SerializeField]
     private GameObject puckPrefab;
     [SerializeField]
+    private GameObject questionText;
+
+    //puck spawning
+    [SerializeField]
     private Vector3 puckSpawnOffset;
     [SerializeField]
     private float puckShootSpeed;
+    [SerializeField]
+    private float puckShootDelay;
+    private float puckShootDelayTimer = 0;
+
+    //save data collection
+    [SerializeField]
+    private string[] questions;
+    private int curQuestion;
+    private int[] antwoorden;
+
+
     void Start()
     {
-
+        curQuestion = 0;
+        questionText.GetComponent<TextMeshProUGUI>().text = questions[curQuestion];
+        antwoorden = new int[questions.Length];
     }
     void Update()
     {
@@ -76,14 +94,27 @@ public class SjoelenMinigame : MonoBehaviour
                 break;
         }
     }
+    //Called when puck enters trigger
     public void PuckTrigger(int trigger)
     {
         Debug.Log("Received puck trigger with number " + trigger);
-        gameState = gameStates.Aiming;
+        antwoorden[curQuestion] = trigger;
+        curQuestion += 1;
+        if(curQuestion >= questions.Length)
+        {
+            gameState = gameStates.Menu;
+        }
+        else
+        {
+            questionText.GetComponent<TextMeshProUGUI>().text = questions[curQuestion];
+            gameState = gameStates.Aiming;
+        }
     }
 
     private void AimingBehavior()
     {
+        puckShootDelayTimer -= Time.deltaTime;
+        
         if (!Input.GetKey(KeyCode.LeftControl)) //If user is not holding L-ctrl
         {
             Cursor.lockState = CursorLockMode.Locked; // Keep cursor locked
@@ -95,7 +126,7 @@ public class SjoelenMinigame : MonoBehaviour
             Cursor.lockState = CursorLockMode.None; // Unlock cursor
         }
         Debug.Log(aimGuide.transform.rotation);
-        if (Input.GetMouseButtonDown(0)) //When left clicked
+        if (Input.GetMouseButtonDown(0) && puckShootDelayTimer <= 0) //When left clicked
         {
             //shooting puck code
             Quaternion rotation = aimGuide.transform.rotation;
@@ -108,8 +139,9 @@ public class SjoelenMinigame : MonoBehaviour
             puck.GetComponent<Rigidbody>().AddForce(rotation * (new Vector3(puckShootSpeed * 50, 0, 0)), ForceMode.Force);
 
             Cursor.lockState = CursorLockMode.None; //Unlock cursor
-            gameState = gameStates.Shoot; // Change gamestate
+            //gameState = gameStates.Shoot; // Change gamestate
             Debug.Log("shot puck");
+            puckShootDelayTimer = puckShootDelay;
         }
         
     }
