@@ -660,7 +660,7 @@ MonoBehaviour:
   resultText: {fileID: 860805766}
   NewsratedText: {fileID: 330496641}
   audioSource: {fileID: 964386155}
-  stampSound: {fileID: 8300000, guid: 29809155077cc4b4393d69af692a36d2, type: 3}
+  stampSound: {fileID: 0}
   gameTime: 300
   papersToStampLimit: 20
   yesLimit: 10
@@ -980,7 +980,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 0}
+  m_Resource: {fileID: 8300000, guid: 29809155077cc4b4393d69af692a36d2, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.476
   m_Pitch: 1
