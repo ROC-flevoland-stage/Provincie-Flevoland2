@@ -1,0 +1,71 @@
+-1:ja
+-2:nee
+
+-10:1 - Zeer ontevreden
+-11:2 - Ontevreden
+-12:3 - Best ontevreden
+-13:4 - Onder gemiddeld
+-14:5 - Neutraal
+-15:6 - Redelijk tevreden
+-16:7 - Tevreden
+-17:8 - Erg tevreden
+-18:9 - Heel tevreden
+-19:10 - Volledig tevreden
+-20:Ik geef liever geen antwoord
+
+0:Heb je mijn portemonnee gevonden?
+0:Wil je hem teruggeven?<o>-1:1,-2:2</o>
+
+1:(change:portemonnee_teruggegeven,true)
+1:Mijn portemonnee!
+1:Wat fijn dat je hem hebt gevonden.
+1:Ik was hem echt kwijt, dus dit betekent veel voor me.
+1:Heel erg bedankt voor je hulp.
+1:Je hebt me echt geholpen.<j>0:10</j>
+
+2:Oke, misschien later dan.<c></c>
+
+10:Mag ik je nog iets vragen?
+10:Geen zorgen, je hoeft geen antwoord te geven als je dat niet wilt.
+10:Zou je een korte vraag willen beantwoorden?<o>-1:11,-2:12</o>
+
+11:Bedankt!
+11:Hoe tevreden ben je met je financiële situatie?
+11:Je mag een score geven van 1 tot 10.
+11:<o>-10:20,-11:21,-12:22,-13:23,-14:24,-15:25,-16:26,-17:27,-18:28,-19:29,-20:30</o>
+
+12:Geen probleem!
+12:Bedankt voor je hulp.<c></c>
+
+20:(change:financiele_situatie,1)
+20:Bedankt dat je dit wilde delen.<c></c>
+
+21:(change:financiele_situatie,2)
+21:Bedankt dat je dit wilde delen.<c></c>
+
+22:(change:financiele_situatie,3)
+22:Bedankt dat je dit wilde delen.<c></c>
+
+23:(change:financiele_situatie,4)
+23:Bedankt dat je dit wilde delen.<c></c>
+
+24:(change:financiele_situatie,5)
+24:Bedankt dat je dit wilde delen.<c></c>
+
+25:(change:financiele_situatie,6)
+25:Bedankt dat je dit wilde delen.<c></c>
+
+26:(change:financiele_situatie,7)
+26:Bedankt dat je dit wilde delen.<c></c>
+
+27:(change:financiele_situatie,8)
+27:Bedankt dat je dit wilde delen.<c></c>
+
+28:(change:financiele_situatie,9)
+28:Bedankt dat je dit wilde delen.<c></c>
+
+29:(change:financiele_situatie,10)
+29:Bedankt dat je dit wilde delen.<c></c>
+
+30:(change:financiele_situatie,0)
+30:Geen probleem, bedankt voor je hulp.<c></c>

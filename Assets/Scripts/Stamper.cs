@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class StamperGame : MonoBehaviour
 {
@@ -69,9 +70,9 @@ public class StamperGame : MonoBehaviour
 
     void SpawnPaper()
     {
-        if (paperSprites.Length > 0)
+        if (paperSprites.Length > 0 && papersStamped < paperSprites.Length)
         {
-            paperImage.sprite = paperSprites[Random.Range(0, paperSprites.Length)];
+            paperImage.sprite = paperSprites[papersStamped];
         }
     }
 
@@ -95,12 +96,13 @@ public class StamperGame : MonoBehaviour
     void UpdateStampedText()
     {
         NewsratedText.text =
-            "News Rated: " + papersStamped + " / " + papersToStampLimit;
+            "Score: " + papersStamped + " / " + papersToStampLimit;
     }
 
     void EndGame(string endMessage)
     {
         gameOver = true;
         resultText.text = endMessage;
+        SceneManager.LoadScene("E3Demo");
     }
 }

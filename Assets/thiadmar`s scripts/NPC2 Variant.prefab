@@ -1,0 +1,109 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &6424560522458029410
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 470756128555282247, guid: fee2013702324234491e94de3602f9fb, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 226.94
+      objectReference: {fileID: 0}
+    - target: {fileID: 470756128555282247, guid: fee2013702324234491e94de3602f9fb, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.2700195
+      objectReference: {fileID: 0}
+    - target: {fileID: 470756128555282247, guid: fee2013702324234491e94de3602f9fb, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 148.93
+      objectReference: {fileID: 0}
+    - target: {fileID: 470756128555282247, guid: fee2013702324234491e94de3602f9fb, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 470756128555282247, guid: fee2013702324234491e94de3602f9fb, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 470756128555282247, guid: fee2013702324234491e94de3602f9fb, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 470756128555282247, guid: fee2013702324234491e94de3602f9fb, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 470756128555282247, guid: fee2013702324234491e94de3602f9fb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 470756128555282247, guid: fee2013702324234491e94de3602f9fb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 470756128555282247, guid: fee2013702324234491e94de3602f9fb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 666282322209035180, guid: fee2013702324234491e94de3602f9fb, type: 3}
+      propertyPath: normalDialogue
+      value: 
+      objectReference: {fileID: 6804928174238062122}
+    - target: {fileID: 666282322209035180, guid: fee2013702324234491e94de3602f9fb, type: 3}
+      propertyPath: thankYouDialogue
+      value: 
+      objectReference: {fileID: 6385453721229863001}
+    - target: {fileID: 666282322209035180, guid: fee2013702324234491e94de3602f9fb, type: 3}
+      propertyPath: usePortemonneeQuest
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 666282322209035180, guid: fee2013702324234491e94de3602f9fb, type: 3}
+      propertyPath: portemonneeQuestDialogue
+      value: 
+      objectReference: {fileID: 6804928174238062122}
+    - target: {fileID: 666282322209035180, guid: fee2013702324234491e94de3602f9fb, type: 3}
+      propertyPath: portemonneeReturnDialogue
+      value: 
+      objectReference: {fileID: 6385453721229863001}
+    - target: {fileID: 666282322209035180, guid: fee2013702324234491e94de3602f9fb, type: 3}
+      propertyPath: portemonneeWaitingDialogue
+      value: 
+      objectReference: {fileID: 6804928174238062122}
+    - target: {fileID: 2795814646590573167, guid: fee2013702324234491e94de3602f9fb, type: 3}
+      propertyPath: m_Name
+      value: NPC2 Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 3681341366386285381, guid: fee2013702324234491e94de3602f9fb, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 76f6e0967513cc24f87c86b7b90954d2, type: 2}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: fee2013702324234491e94de3602f9fb, type: 3}
+--- !u!114 &6385453721229863001 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 123056870217872699, guid: fee2013702324234491e94de3602f9fb, type: 3}
+  m_PrefabInstance: {fileID: 6424560522458029410}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1bbe51e12e5dba74682d4eb71b890bc1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DialogueTree
+--- !u!114 &6804928174238062122 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 524504289999719240, guid: fee2013702324234491e94de3602f9fb, type: 3}
+  m_PrefabInstance: {fileID: 6424560522458029410}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1bbe51e12e5dba74682d4eb71b890bc1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DialogueTree

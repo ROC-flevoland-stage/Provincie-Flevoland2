@@ -81,12 +81,21 @@ public static class SaveManager
     }
 
     /// <summary>
+    /// Converts the persistent save data to a JSON string for saving. Only entries marked as persistent will be included.
+    /// </summary>
+    /// <returns>A string containing the JSON data</returns>
+    public static string GetJsonData()
+    {
+        var persistentData = GetPersistantData();
+        return JsonConvert.SerializeObject(persistentData, JsonSerializerSettings);
+    }
+
+    /// <summary>
     /// Saves the current saveData to PlayerPrefs, a .json file, and an 'encrypted' .sav file.
     /// </summary>
     public static void SaveDataToFile()
     {
-        var persistentData = GetPersistantData();
-        string saveString = JsonConvert.SerializeObject(persistentData, JsonSerializerSettings);
+        string saveString = GetJsonData();
 
         // Save to PlayerPrefs
         PlayerPrefs.SetString("SaveData", saveString);
