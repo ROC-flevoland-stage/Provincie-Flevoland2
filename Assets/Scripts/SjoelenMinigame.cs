@@ -3,6 +3,7 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class SjoelenMinigame : MonoBehaviour
 {
@@ -124,24 +125,30 @@ public class SjoelenMinigame : MonoBehaviour
     {
         puckShootDelayTimer -= Time.deltaTime;
 
-        if (Input.GetKeyDown(KeyCode.Alpha1)) { 
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
             PuckTrigger(1);
-        }
+            Cursor.lockState = CursorLockMode.None; //Unlock cursor
+        } else
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
             PuckTrigger(2);
-        }
+            Cursor.lockState = CursorLockMode.None; //Unlock cursor
+        } else
         if (Input.GetKeyDown(KeyCode.Alpha3))
         {
             PuckTrigger(3);
-        }
+            Cursor.lockState = CursorLockMode.None; //Unlock cursor
+        } else
         if (Input.GetKeyDown(KeyCode.Alpha4))
         {
             PuckTrigger(4);
-        }
+            Cursor.lockState = CursorLockMode.None; //Unlock cursor
+        } else
         if (Input.GetKeyDown(KeyCode.Alpha5))
         {
             PuckTrigger(5);
+            Cursor.lockState = CursorLockMode.None; //Unlock cursor
         }
 
         if (!Input.GetKey(KeyCode.LeftControl)) //If user is not holding L-ctrl
@@ -180,6 +187,7 @@ public class SjoelenMinigame : MonoBehaviour
     }
     private void MenuBehavior()
     {
+        Cursor.lockState = CursorLockMode.None; //Unlock cursor
         if (!finished) 
         {
             
@@ -200,5 +208,10 @@ public class SjoelenMinigame : MonoBehaviour
         gameState = gameStates.Menu;
         EndScreen.SetActive(true );
         GameOverlay.SetActive(false);
+    }
+
+    public void ExitMinigame()
+    {
+        SceneManager.LoadScene("E3Demo");
     }
 }
