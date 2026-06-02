@@ -1,6 +1,10 @@
+using System;
 using System.Collections;
 using TMPro;
+using Unity.Mathematics;
+using Unity.Multiplayer.Center.Common;
 using Unity.VisualScripting;
+using UnityEditor.PackageManager;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -61,6 +65,14 @@ public class SjoelenMinigame : MonoBehaviour
     private GameObject StartScreen;
     [SerializeField]
     private GameObject EndScreen;
+    [SerializeField]
+    private GameObject QuestionVerificationPrefab;
+
+    //Question Verification
+    [SerializeField]
+    private int QuestionVerificationPosition;
+    [SerializeField]
+    private int QuestionVerificationOffset;
 
     //puck spawning
     [SerializeField]
@@ -73,16 +85,22 @@ public class SjoelenMinigame : MonoBehaviour
 
     //save data collection
     [SerializeField]
-    private string[] questions;
+    public string[] Questions;
+    [SerializeField]
+    public string[] QuestionsID;
     private int curQuestion;
     private int[] antwoorden;
 
 
     void Start()
     {
+        if (Questions.Length != QuestionsID.Length)
+        {
+            Debug.LogError("Questions length does not match QuestionsID length");
+        }
         curQuestion = 0;
-        questionText.GetComponent<TextMeshProUGUI>().text = questions[curQuestion];
-        antwoorden = new int[questions.Length];
+        questionText.GetComponent<TextMeshProUGUI>().text = Questions[curQuestion];
+        antwoorden = new int[Questions.Length];
     }
     void Update()
     {
@@ -109,14 +127,14 @@ public class SjoelenMinigame : MonoBehaviour
         Debug.Log("Received puck trigger with number " + trigger);
         antwoorden[curQuestion] = trigger;
         curQuestion += 1;
-        if(curQuestion >= questions.Length)
+        if(curQuestion >= Questions.Length)
         {
             finished = true;
             EndGame();  
         }
         else
         {
-            questionText.GetComponent<TextMeshProUGUI>().text = questions[curQuestion];
+            questionText.GetComponent<TextMeshProUGUI>().text = Questions[curQuestion];
             gameState = gameStates.Aiming;
         }
     }
@@ -206,12 +224,34 @@ public class SjoelenMinigame : MonoBehaviour
     public void EndGame()
     {
         gameState = gameStates.Menu;
-        EndScreen.SetActive(true );
+        EndScreen.SetActive(true);
         GameOverlay.SetActive(false);
+
+        Transform endscreenTransform = EndScreen.transform;
+        for (int i = 0; i < Questions.Length; i++)
+        {
+            GameObject QuestionVerification = Instantiate(QuestionVerificationPrefab, endscreenTransform);
+            QuestionVerification.GetComponent<SjoelenQuestion>().QuestionIndex = i;
+            QuestionVerification.transform.Translate(new Vector3(0, QuestionVerificationPosition + i * -QuestionVerificationOffset, 0));
+        }
     }
 
     public void ExitMinigame()
     {
+        for(int i = 0; i < Questions.Length; i++)
+        {
+            SaveManager.CreateOrSetValue(QuestionsID[i], antwoorden[i], true);            
+        }
         SceneManager.LoadScene("E3Demo");
+    }
+
+    /// <summary>
+    /// Tries to change a previous given answer and returns the new value
+    /// </summary>
+    /// <param name="answerIndex"></param>
+    /// <param name="changeAmount"></param>
+    public int TryChangeAnswer(int answerIndex, int changeAmount)
+    {
+        return (antwoorden[answerIndex] = Mathf.Clamp((antwoorden[answerIndex] + changeAmount),1,5));
     }
 }
