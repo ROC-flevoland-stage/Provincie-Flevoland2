@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using static UnityEngine.Rendering.DebugUI;
 
 public class GemeenteInput : MonoBehaviour
 {
@@ -13,7 +14,7 @@ public class GemeenteInput : MonoBehaviour
         if (gemeenteDropdown == null) return;
 
         string selectedGemeente = gemeenteDropdown.options[index].text;
-
+        SaveManager.CreateOrSetValue("Achtergrond_Gemeente", selectedGemeente, true);
         if (gemeenteText != null)
             gemeenteText.text = "Gemeente: " + selectedGemeente;
 

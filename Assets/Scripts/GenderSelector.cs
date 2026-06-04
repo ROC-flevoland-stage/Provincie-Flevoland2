@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using static UnityEngine.Rendering.DebugUI;
 
 public class GenderSelector : MonoBehaviour
 {
@@ -14,6 +15,7 @@ public class GenderSelector : MonoBehaviour
 
         if (characterData != null)
             characterData.gender = "Man";
+        genderChanged();
     }
     public void SelectFemale()
     {
@@ -21,6 +23,7 @@ public class GenderSelector : MonoBehaviour
 
         if (characterData != null)
             characterData.gender = "Vrouw";
+        genderChanged();
     }
 
     public void SelectOther()
@@ -29,5 +32,11 @@ public class GenderSelector : MonoBehaviour
 
         if (characterData != null)
             characterData.gender = "Anders";
+        genderChanged();
+    }
+
+    private void genderChanged()
+    {
+        SaveManager.CreateOrSetValue("Achtergrond_Geslacht", characterData.gender, true);
     }
 }
