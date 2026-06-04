@@ -21,6 +21,7 @@ public class AgeSelector : MonoBehaviour
     public void OnAgeChanged(float value)
     {
         UpdateAgeText(value);
+        SaveManager.CreateOrSetValue("Achtergrond_Leeftijd",value,true);
     }
     // Update de leeftijdstekst en sla de waarde op in characterData
     private void UpdateAgeText(float value)
