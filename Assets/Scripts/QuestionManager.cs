@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -8,21 +9,16 @@ public class QuestionManager : MonoBehaviour
     public TextMeshProUGUI questionTextUI;
 
 
-
+    [SerializeField]
     public List<Question> questions = new List<Question>();
 
     private int currentIndex = 0;
 
     public Question CurrentQuestion => questions[currentIndex];
+
     
     void Start()
     { // Voorbeeldvragen
-
-        questions.Add(new Question { questionText = "Hoe is je lichamelijke gezondheid?", answer = 0 });
-        questions.Add(new Question { questionText = "Hoe is je mentale Gezondheid?", answer = 0 });
-        questions.Add(new Question { questionText = "Hoe is je hoeveelheid vrije tijd?", answer = 0 });
-        questions.Add(new Question { questionText = "En de veiligheid in je buurt?", answer = 0 });
-        questions.Add(new Question { questionText = "En hoe zou jij de natuur in je leefomgeving geven?", answer = 0 });
 
         DisplayQuestion();
     }
@@ -43,12 +39,7 @@ public class QuestionManager : MonoBehaviour
 
         if (currentIndex >= questions.Count)
         {
-            Debug.Log("All questions completed!");
-
-            //Cursor.lockState = CursorLockMode.None;
-            SceneManager.LoadScene("E3Demo");
-
-            return;
+            endMinigame();
         }
 
         DisplayQuestion();
@@ -56,6 +47,21 @@ public class QuestionManager : MonoBehaviour
     public void DisplayQuestion()
     {
         questionTextUI.text = CurrentQuestion.questionText;
+    }
+
+    private void endMinigame()
+    {
+        Debug.Log("All questions completed!");
+
+        foreach (Question question in questions)
+        {
+            SaveManager.CreateOrSetValue(question.questionID, question.answer, true);
+        }
+
+        //Cursor.lockState = CursorLockMode.None;
+        SceneManager.LoadScene("E3Demo");
+
+        return;
     }
 
     // Voor snelle toetsen 1-10 om antwoorden in te voeren zonder de mini-game. (Testen)
