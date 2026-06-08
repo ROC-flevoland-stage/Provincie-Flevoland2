@@ -32022,7 +32022,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   questionTextUI: {fileID: 998600313}
-  questions: []
+  questions:
+  - questionText: Hoe is je lichamelijke gezondheid?
+    answer: 0
+    questionID: Tevredenheid_BW_Lichaamelijke_Gezondheid
+  - questionText: Hoe is je Mentale gezondheid?
+    answer: 0
+    questionID: Tevredenheid_BW_Mentale_Gezondheid
+  - questionText: Hoe is je hoeveelheid vrije tijd?
+    answer: 0
+    questionID: Tevredenheid_BW_Vrije_Tijd
+  - questionText: Hoe is de veiligheid in je buurt?
+    answer: 0
+    questionID: Tevredenheid_BW_Veiligheid
+  - questionText: 'Hoe is het groen en de natuur in je leefomgeving? '
+    answer: 0
+    questionID: Tevredenheid_BW_Natuur
+  - questionText: Hoe is de milieukwaliteit in je leefomgeving? (zoals lucht, water,
+      bodem, geluid)
+    answer: 0
+    questionID: Tevredenheid_BW_Milieu
 --- !u!4 &1586825535
 Transform:
   m_ObjectHideFlags: 0
