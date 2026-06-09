@@ -1,0 +1,48 @@
+-1: 1 - Heel ontevreden
+-2: 2
+-3: 3
+-4: 4
+-5: 5 - Neutraal
+-6: 6
+-7: 7
+-8: 8
+-9: 9
+-10: 10 - Heel tevreden
+-11: Weet ik niet / geen mening
+
+0:Hoe tevreden ben je met je leven in het algemeen?
+0:Geef een score van 1 tot 10.
+0:<o>-1:1,-2:2,-3:3,-4:4,-5:5,-6:6,-7:7,-8:8,-9:9,-10:10,-11:11</o>
+
+1:(change:leven_score,1)
+1:Bedankt voor je antwoord.<c></c>
+
+2:(change:leven_score,2)
+2:Bedankt voor je antwoord.<c></c>
+
+3:(change:leven_score,3)
+3:Bedankt voor je antwoord.<c></c>
+
+4:(change:leven_score,4)
+4:Bedankt voor je antwoord.<c></c>
+
+5:(change:leven_score,5)
+5:Bedankt voor je antwoord.<c></c>
+
+6:(change:leven_score,6)
+6:Bedankt voor je antwoord.<c></c>
+
+7:(change:leven_score,7)
+7:Bedankt voor je antwoord.<c></c>
+
+8:(change:leven_score,8)
+8:Bedankt voor je antwoord.<c></c>
+
+9:(change:leven_score,9)
+9:Bedankt voor je antwoord.<c></c>
+
+10:(change:leven_score,10)
+10:Bedankt voor je antwoord.<c></c>
+
+11:(change:leven_score,0)
+11:Bedankt voor je antwoord.<c></c>

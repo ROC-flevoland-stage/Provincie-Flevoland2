@@ -9,20 +9,53 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: a56783a1f16fc4e4bb0386803b9ddb70
   - enabled: 1
-    path: Assets/Scenes/US 2 Character Creator.unity
+    path: Assets/Scenes/US 2 Updated Character Sheet.unity
     guid: 3f68cdc99cedbb44ca6a7a25e44d5442
   - enabled: 1
     path: Assets/Scenes/E3Demo.unity
     guid: d5490c1f443c17145a77b10c148a24bc
   - enabled: 1
-    path: Assets/Scenes/MinigameUno.unity
-    guid: 99c9720ab356a0642a771bea13969a05
+    path: Assets/Scenes/MinigameFiles.unity
+    guid: ea5fb8197e9aee84a969e23840cdd13f
+  - enabled: 1
+    path: Assets/Scenes/MinigameNews.unity
+    guid: 9874d82b7ba1e8d4a9d1e497251ddbb8
+  - enabled: 1
+    path: Assets/Scenes/ShootingMinigameSem.unity
+    guid: c07a706fa4b0ea34b9a1c6a729aa7b71
   - enabled: 1
     path: Assets/Scenes/ArcadeTransition.unity
     guid: 9591408c1c942754f8f111ca83c69a77
   - enabled: 1
-    path: Assets/Scenes/ShootingMinigameSem.unity
-    guid: c07a706fa4b0ea34b9a1c6a729aa7b71
+    path: Assets/Scenes/Building Test.unity
+    guid: 8c0a9e9d5493c874fb58993119dce0e7
+  - enabled: 1
+    path: Assets/Scenes/DialogueTestScene.unity
+    guid: 8372dcfb706e751498757bbbf3631bf0
+  - enabled: 1
+    path: Assets/Scenes/Extra dataverzaamel opdrachten.unity
+    guid: 64bf1d218dfd78c42a448befc47bd522
+  - enabled: 1
+    path: Assets/Scenes/MinigameBasketball.unity
+    guid: 7304fc125daba674abb72c3bc3ce4339
+  - enabled: 1
+    path: Assets/Scenes/MinigameUno.unity
+    guid: 99c9720ab356a0642a771bea13969a05
+  - enabled: 1
+    path: Assets/Scenes/pickup test locatie.unity
+    guid: 953a977fd2b17bb40aed499c705536e6
+  - enabled: 1
+    path: Assets/Scenes/provincie flevoland 2.unity
+    guid: 3f027a7d67f88044b91736fca8913075
+  - enabled: 1
+    path: Assets/Scenes/US 8 Resources.unity
+    guid: e6a72f46a00ee0c41aecb348a28d40b6
+  - enabled: 1
+    path: Assets/Scenes/US 10.3 Sprint button Stamina.unity
+    guid: 52704697f30e93a488fede291d85bbd0
+  - enabled: 1
+    path: Assets/Scenes/MinigameSjoelen.unity
+    guid: d7823f4fb7bad2f439be4d5d976cb1b8
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0

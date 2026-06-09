@@ -1,33 +1,37 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class StamperGame : MonoBehaviour
 {
     [Header("Paper")]
     public Image paperImage;
-    public Sprite[] goodPaperSprites;
-    public Sprite[] badPaperSprites;
+    public Sprite[] paperSprites;   
 
     [Header("UI")]
     public TMP_Text timerText;
     public TMP_Text resultText;
-    public TMP_Text papersStampedText;
+    public TMP_Text NewsratedText;
 
     [Header("Audio")]
     public AudioSource audioSource;
-    public AudioClip correctSound;
-    public AudioClip wrongSound;
+    public AudioClip stampSound;
 
     [Header("Settings")]
     public float gameTime = 30f;
-    public int papersToStampLimit = 7; 
+    public int papersToStampLimit = 7;
+
+    // YES / NO LIMIT
+    public int yesLimit = 5;
+    public int noLimit = 5;
 
     float timeLeft;
-    bool isGoodPaper;
     bool gameOver = false;
 
     int papersStamped = 0;
+    int yesCount = 0;
+    int noCount = 0;
 
     void Start()
     {
@@ -51,49 +55,35 @@ public class StamperGame : MonoBehaviour
         }
 
         // Input
-        if (Input.GetMouseButtonDown(0)) // Accept
+        if (Input.GetMouseButtonDown(0) && yesCount < yesLimit) // YES
         {
-            Stamp(true);
+            yesCount++;
+            Stamp();
         }
 
-        if (Input.GetMouseButtonDown(1)) // Reject
+        if (Input.GetMouseButtonDown(1) && noCount < noLimit) // NO
         {
-            Stamp(false);
+            noCount++;
+            Stamp();
         }
     }
 
     void SpawnPaper()
     {
-        isGoodPaper = Random.value > 0.5f;
-
-        if (isGoodPaper && goodPaperSprites.Length > 0)
+        if (paperSprites.Length > 0 && papersStamped < paperSprites.Length)
         {
-            paperImage.sprite = goodPaperSprites[Random.Range(0, goodPaperSprites.Length)];
-        }
-        else if (!isGoodPaper && badPaperSprites.Length > 0)
-        {
-            paperImage.sprite = badPaperSprites[Random.Range(0, badPaperSprites.Length)];
+            paperImage.sprite = paperSprites[papersStamped];
         }
     }
 
-    void Stamp(bool accepted)
+    void Stamp()
     {
         papersStamped++;
         UpdateStampedText();
 
-        // Feedback only
-        if (accepted == isGoodPaper)
-        {
-            if (audioSource && correctSound)
-                audioSource.PlayOneShot(correctSound);
-        }
-        else
-        {
-            if (audioSource && wrongSound)
-                audioSource.PlayOneShot(wrongSound);
-        }
+        if (audioSource && stampSound)
+            audioSource.PlayOneShot(stampSound);
 
-        
         if (papersStamped >= papersToStampLimit)
         {
             EndGame("DONE");
@@ -105,13 +95,14 @@ public class StamperGame : MonoBehaviour
 
     void UpdateStampedText()
     {
-        papersStampedText.text =
-            "Papers stamped: " + papersStamped + " / " + papersToStampLimit;
+        NewsratedText.text =
+            "Score: " + papersStamped + " / " + papersToStampLimit;
     }
 
     void EndGame(string endMessage)
     {
         gameOver = true;
         resultText.text = endMessage;
+        SceneManager.LoadScene("E3Demo");
     }
 }

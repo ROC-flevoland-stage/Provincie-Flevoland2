@@ -1,47 +1,64 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ResourcesManager : MonoBehaviour
 {
-    static ResourcesManager instance;
-    public static ResourcesManager Instance { get; private set; }
-    
-    private TextMeshProUGUI energieUI;
-    private TextMeshProUGUI geldUI;
-    private TextMeshProUGUI stressUI;
+    static ResourcesManager instance; // instance of this object
+    public static ResourcesManager Instance { get; private set; } //get set voor instance
 
-    private int energie = 0;
-    private float geld = 0;
-    private int stress = 0;
+    private TextMeshProUGUI geldTextValue; //ui object for geld text 
+    private Slider energieSliderValue; //ui object for energie slider value
+    private Slider stressSliderValue; //ui object for stress slider value
 
+    [SerializeField]
+    private float geld = 0; //float that internally stores geld
+    [SerializeField]
+    private int energie = 0; //int that internally stores energie
+    [SerializeField]
+    private int maxEnergie; //int that internally stores max energie
+    [SerializeField]
+    private int stress = 0; //int that internally stores stress
+    [SerializeField]
+    private int maxStress; //int that internally stores max stress
+
+
+
+    // get set for Geld
+    [SerializeField]
+    public float Geld
+    {
+        get { return geld; }
+        set
+        {
+            geld = (Mathf.Floor(value * 100)) * 0.01f; // Set internal value to given value, rounding it to cents
+            SaveManager.CreateOrSetValue<float>("Resource_Manager_Geld", value, true); // Set value in save file
+            geldTextValue.text = geld.ToString(); // Set text value
+        }
+    }
 
     // get set for Energie
     public int Energie { 
         get { return energie; } 
         set
         {
-            energie = value;
-            energieUI.text = $"Energie: {energie}";
+            if (value > maxEnergie) { value = maxEnergie; } // If given value exceeds max, clamp
+            energie = value; // Set internal value to given value
+            SaveManager.CreateOrSetValue<int>("Resource_Manager_Energie", value, true); // Set value in save file
+            energieSliderValue.value = (float)energie/maxEnergie; // Set slider value
         } 
     }
-    // get set for Geld
-    public float Geld
-    {
-        get { return geld; }
-        set
-        {
-            geld = (Mathf.Floor(value * 100))*0.01f;    
-            geldUI.text = $"Geld: ${geld}";
-        }
-    }
+
     // get set for Stress
     public int Stress
     {
         get { return stress; }
         set
         {
-            stress = value;
-            stressUI.text = $"Stress: {stress}";
+            if(value > maxStress) { value = maxStress; } // If given value exceeds max, clamp
+            stress = value; // Set internal value to given value
+            SaveManager.CreateOrSetValue<float>("Resource_Manager_Stress", value, true); // Set value in save file
+            stressSliderValue.value = (float)stress / maxStress; // Set slider value
         }
     }
 
@@ -56,10 +73,40 @@ public class ResourcesManager : MonoBehaviour
         else
         {
             instance = this;
-            energieUI = transform.Find("Energie").GetComponent<TextMeshProUGUI>();
-            geldUI = transform.Find("Geld").GetComponent<TextMeshProUGUI>();
-            stressUI = transform.Find("Stress").GetComponent<TextMeshProUGUI>();
+
+            // Find UI components
+            geldTextValue = transform.Find("Geld").GetComponent<TextMeshProUGUI>();
+            energieSliderValue = transform.Find("Energie").GetComponent<Slider>();
+            stressSliderValue = transform.Find("Stress").GetComponent<Slider>();
+
+
+            // TEMPORARY load save file
+            SaveManager.LoadDataFromFile();
+            // Get values from save file
+            float _geld = 0;
+            int _energie = 0;
+            int _stress = 0;
+            if (SaveManager.TryGetValue<float>("Resource_Manager_Geld", out _geld))
+            {
+                Geld = _geld;
+            }
+            if (SaveManager.TryGetValue<int>("Resource_Manager_Energie", out _energie))
+            {
+                Energie = _energie;
+            }
+            if (SaveManager.TryGetValue<int>("Resource_Manager_Stress", out _energie))
+            {
+                Stress = _stress;
+            }
+
+            DontDestroyOnLoad(gameObject);
         }
     }
-    
+
+    void Start()
+    {
+        maxEnergie = (maxEnergie == 0) ? 1 : maxEnergie; // If max is for whatever reason 0, set it to 1 to avoid divide by 0
+        maxStress = (maxStress == 0) ? 1 : maxStress; // Same as above
+    }
+
 }

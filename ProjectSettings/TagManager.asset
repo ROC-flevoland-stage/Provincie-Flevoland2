@@ -4,6 +4,10 @@
 TagManager:
   serializedVersion: 3
   tags:
+  - sjoelbakTrigger
+  - item
+  - NPC
+  - Ball
   - File
   - QuestionsManager
   - Hit

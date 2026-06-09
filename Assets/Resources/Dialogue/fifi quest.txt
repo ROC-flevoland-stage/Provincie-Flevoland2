@@ -1,0 +1,19 @@
+-1:ja  -2:nee
+
+0: Yo gast! 
+0: Ik heb je hulp nodig met iets belangrijks. 
+0: Ik ben mijn huisdierkubus ergens hier kwijtgeraakt. 
+0: Kun je me helpen haar te vinden? 0: Alsjeblieft? Ze betekent veel voor me! 
+0: Als je haar vindt, wil je haar dan alsjeblieft terugbrengen? 
+0: Ze lijkt op een huisdiersteen, maar dan een kubus in plaats van een steen. 
+
+0: Wil je naar haar zoeken?<o>-1:1,-2:2</o> 
+
+1:Dank je wel!<c></c>
+ 
+2:Oh, oke. Dan zoek ik zelf wel. 
+2:Ik hoop dat ze veilig is. 
+2:Ze betekent veel voor me. 
+2:Ze is mijn beste vriend. 
+2:De enige familie die ik nog heb. 
+2:FIFI, WAAR BEN JE?!<c></c>.

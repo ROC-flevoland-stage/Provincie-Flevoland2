@@ -3,10 +3,10 @@ using UnityEngine;
 public class SkinMaterialCycle : MonoBehaviour
 {
     [Header("Objects to reskin")]
-    public Renderer[] targetRenderers;  // Objects here
+    public Renderer[] targetRenderers;  // Objects hier
 
     [Header("Available Skin Materials")]
-    public Material[] skinMaterials;    // materials here
+    public Material[] skinMaterials;    // materials hier
 
     private int currentIndex = 0;
 
@@ -14,7 +14,7 @@ public class SkinMaterialCycle : MonoBehaviour
     {
         ApplyMaterial();
     }
-
+    // Cycles door de materialen in de array en precenteert deze op de speler, dit kan worden aangeroepen vanuit de UI knoppen
     public void NextMaterial()
     {
         currentIndex++;

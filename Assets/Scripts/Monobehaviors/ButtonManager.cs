@@ -19,13 +19,13 @@ public class ButtonManager : MonoBehaviour
     /// Loads a scene asynchronously by its name.
     /// </summary>
     /// <param name="sceneName">The name of the scene to be loaded</param>
-    public static void LoadSceneAsync(string sceneName) => SceneManager.LoadSceneAsync(sceneName);
+    public static void LoadSceneAsync(string sceneName) => SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
 
     /// <summary>
     /// Loads a scene asynchronously by its index.
     /// </summary>
     /// <param name="sceneIndex">The build index of the scene to be loaded</param>
-    public static void LoadSceneAsync(int sceneIndex) => SceneManager.LoadSceneAsync(sceneIndex);
+    public static void LoadSceneAsync(int sceneIndex) => SceneManager.LoadSceneAsync(sceneIndex, LoadSceneMode.Additive);
 
     /// <summary>
     /// Reloads the current active scene.
