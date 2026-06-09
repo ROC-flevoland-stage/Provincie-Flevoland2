@@ -3,39 +3,22 @@ using TMPro;
 
 public class FileSpawner : MonoBehaviour
 {
-    public static FileSpawner Instance { get { return _instance; } }
-    private static FileSpawner _instance;
-    void Awake()
-    {
-        if (Instance != null && Instance != this)
-        {
-            Destroy(gameObject);
-        }
-        else
-        {
-            _instance = this;
-        }
-    }
-
-
     public GameObject[] cubesToSpawn;
     public string[] spawnLabels; // edit these in the Inspector to change text per cube
-    public string[] spawnLabelsIDs;
-    public int[] answers;
     public GameManager gameManager;
 
     [Header("UI")]
     public TMP_Text spawnIndicatorText; // assign a TextMeshProUGUI element in the Canvas (top middle)
 
     GameObject currentInstance;
-    int questionIndex;
+    int spawnIndex;
 
     void Start()
     {
         if (gameManager == null)
             gameManager = FindObjectOfType<GameManager>();
 
-        questionIndex = 0;
+        spawnIndex = 0;
         TrySpawn();
     }
 
@@ -47,34 +30,34 @@ public class FileSpawner : MonoBehaviour
 
     void TrySpawn()
     {
-        if (questionIndex >= cubesToSpawn.Length) return;
-        var prefab = cubesToSpawn[questionIndex];
+        if (spawnIndex >= cubesToSpawn.Length) return;
+        var prefab = cubesToSpawn[spawnIndex];
         if (prefab == null) return;
-        if (gameManager != null && questionIndex >= gameManager.totalCubes) return;
+        if (gameManager != null && spawnIndex >= gameManager.totalCubes) return;
 
         // spawned op spawner
         currentInstance = Instantiate(prefab, transform.position, Quaternion.identity);
 
         // kiest de label
         string label = null;
-        if (spawnLabels != null && spawnLabels.Length > questionIndex && !string.IsNullOrEmpty(spawnLabels[questionIndex]))
-            label = spawnLabels[questionIndex];
+        if (spawnLabels != null && spawnLabels.Length > spawnIndex && !string.IsNullOrEmpty(spawnLabels[spawnIndex]))
+            label = spawnLabels[spawnIndex];
 
         var fileComp = currentInstance.GetComponent<SpawnedFile>();
         if (fileComp != null)
         {
-            fileComp.index = questionIndex;
+            fileComp.index = spawnIndex;
             if (string.IsNullOrEmpty(label))
             {
                 // bestaande label blijft zolang er iets staat anders default het naar item
-                label = !string.IsNullOrEmpty(fileComp.label) ? fileComp.label : "Item " + (questionIndex + 1);
+                label = !string.IsNullOrEmpty(fileComp.label) ? fileComp.label : "Item " + (spawnIndex + 1);
             }
             fileComp.label = label;
         }
         else
         {
             if (string.IsNullOrEmpty(label))
-                label = "Item " + (questionIndex + 1);
+                label = "Item " + (spawnIndex + 1);
         }
 
         // If prefab contains a TextMeshPro (3D) element, set it
@@ -89,6 +72,6 @@ public class FileSpawner : MonoBehaviour
             spawnIndicatorText.text = label;
         }
 
-        questionIndex++;
+        spawnIndex++;
     }
 }
