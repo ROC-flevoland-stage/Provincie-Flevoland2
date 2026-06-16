@@ -1,4 +1,4 @@
-﻿%YAML 1.1
+%YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
 --- !u!29 &1
 OcclusionCullingSettings:
@@ -808,8 +808,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77252d070359c6e40b2f7729952b9c72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Npctrigger
+  usePortemonneeQuest: 0
   normalDialogue: {fileID: 1298366609}
   thankYouDialogue: {fileID: 1298366608}
+  portemonneeQuestDialogue: {fileID: 0}
+  portemonneeReturnDialogue: {fileID: 0}
 --- !u!1 &1340427766
 GameObject:
   m_ObjectHideFlags: 0
