@@ -41,8 +41,11 @@ public class QuestionManager : MonoBehaviour
         {
             endMinigame();
         }
+        else
+        {
+            DisplayQuestion();
+        }
 
-        DisplayQuestion();
     }
     public void DisplayQuestion()
     {
