@@ -2,15 +2,14 @@ using UnityEngine;
 
 public class SortZone : MonoBehaviour
 {
-    public int rating = 1;
-    public GameManager gameManager;
+    [Range(1, 5)]
+    public int zoneNumber = 1;
 
-    // Destroy de file als het komt in de sortzone.
     void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("File"))
-        {
-            gameManager.PlaceCube(rating, other.gameObject);
-        }
+        if (!other.CompareTag("File")) return;
+
+        Debug.Log("SortZone number: " + zoneNumber);
+        Destroy(other.gameObject);
     }
 }
