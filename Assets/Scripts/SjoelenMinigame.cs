@@ -94,6 +94,9 @@ public class SjoelenMinigame : MonoBehaviour
 
     void Start()
     {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+
         if (Questions.Length != QuestionsID.Length)
         {
             Debug.LogError("Questions length does not match QuestionsID length");
@@ -216,6 +219,8 @@ public class SjoelenMinigame : MonoBehaviour
     }
     public void StartGame()
     {
+        Cursor.lockState = CursorLockMode.Confined;
+        Cursor.visible = false;
         gameState = gameStates.Aiming;
         StartScreen.SetActive(false);
         GameOverlay.SetActive(true);
@@ -223,6 +228,8 @@ public class SjoelenMinigame : MonoBehaviour
     }
     public void EndGame()
     {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
         gameState = gameStates.Menu;
         EndScreen.SetActive(true);
         GameOverlay.SetActive(false);
