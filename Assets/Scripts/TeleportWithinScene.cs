@@ -6,6 +6,12 @@ public class TeleportWithinScene : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        other.transform.position = target;
+        if(other.gameObject.TryGetComponent<CharacterController>(out CharacterController controller))
+        {
+            controller.enabled = false;
+            other.transform.position = target;
+            controller.enabled = true;
+        }
+        Debug.Log(other );
     }
 }
