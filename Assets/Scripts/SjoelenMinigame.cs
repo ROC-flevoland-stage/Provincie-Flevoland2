@@ -1,12 +1,5 @@
-using System;
-using System.Collections;
 using TMPro;
-using Unity.Mathematics;
-using Unity.Multiplayer.Center.Common;
-using Unity.VisualScripting;
-using UnityEditor.PackageManager;
 using UnityEngine;
-using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
 public class SjoelenMinigame : MonoBehaviour
